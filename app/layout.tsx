@@ -2,9 +2,17 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Idea Fabrika",
+  title: {
+    default: "Idea Fabrika",
+    template: "%s | Idea Fabrika",
+  },
   description:
     "Idea Fabrika is a community café and social space in Stoke Newington, bringing together food, culture and community.",
+  applicationName: "Idea Fabrika",
+  icons: {
+    icon: [{ url: "/icon.png", type: "image/png" }],
+    apple: [{ url: "/apple-icon.png", type: "image/png" }],
+  },
   openGraph: {
     title: "Idea Fabrika",
     description:
@@ -15,7 +23,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "Idea Fabrika",
     description:
       "Idea Fabrika is a community café and social space in Stoke Newington, bringing together food, culture and community.",
