@@ -31,7 +31,7 @@ const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const highlights = [
     "Fresh Kurdish & Turkish food",
-    "Affordable community café",
+    "Full bilingual café menu",
     "English and skills sessions",
     "Creative and wellbeing activities",
     "Family-friendly atmosphere",
@@ -53,11 +53,232 @@ const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     },
   ];
 
-  const cafeFeatures = [
-    "Fresh Kurdish & Turkish dishes",
-    "Traditional breakfasts",
-    "Tea, coffee and homemade food",
-    "Full food menu coming soon",
+  type MenuItem = {
+    tr: string;
+    en: string;
+    price: string;
+    note?: string;
+  };
+
+  type MenuSection = {
+    id: string;
+    tr: string;
+    en: string;
+    intro?: string;
+    items: MenuItem[];
+  };
+
+  const menuSections: MenuSection[] = [
+    {
+      id: "kahvalti",
+      tr: "Kahvaltı",
+      en: "Breakfast",
+      items: [
+        {
+          tr: "Günlük Taze Kömbe",
+          en: "Daily baked kömbe (kıymalı veya ıspanaklı / minced meat or spinach)",
+          price: "£2.50",
+        },
+        {
+          tr: "Kömbe Tabağı",
+          en: "Kömbe platter (domates, salatalık, zeytin / tomato, cucumber, olives)",
+          price: "£5.00",
+        },
+        {
+          tr: "Kahvaltı Tabağı",
+          en: "Mediterranean breakfast (beyaz peynir, kaşar, hellim, sucuk, zeytin, bal, domates, salatalık / feta, kaşar, halloumi, sucuk, olives, honey, tomato, cucumber)",
+          price: "£9.00",
+        },
+        {
+          tr: "Peynir Tabağı",
+          en: "Cheese platter (kaşar, beyaz peynir, zeytin, domates)",
+          price: "£5.00",
+        },
+        {
+          tr: "Söğüş",
+          en: "Fresh vegetable plate (domates, biber, salatalık)",
+          price: "£3.00",
+        },
+        {
+          tr: "Menemen",
+          en: "Tomato & pepper eggs",
+          price: "£8.00",
+          note: "+ £1.00 sucuk / ıspanak / beyaz peynir each",
+        },
+        {
+          tr: "Sahanda 2 Yumurta",
+          en: "Two fried eggs",
+          price: "£3.50",
+        },
+        {
+          tr: "Sahanda 3 Yumurta",
+          en: "Three fried eggs",
+          price: "£5.00",
+        },
+        {
+          tr: "Sade Omlet",
+          en: "Plain omelette",
+          price: "£6.00",
+        },
+        {
+          tr: "Ispanak / Peynir / Mantar Omlet",
+          en: "Spinach, cheese or mushroom omelette",
+          price: "£7.50",
+        },
+        {
+          tr: "Karışık Sebzeli Omlet",
+          en: "Mixed vegetable omelette (mantar, ıspanak, biber, peynir)",
+          price: "£8.00",
+        },
+        {
+          tr: "Ev Yapımı Yoğurt",
+          en: "Homemade yogurt",
+          price: "£3.00",
+        },
+      ],
+    },
+    {
+      id: "tostlar",
+      tr: "Tostlar",
+      en: "Toasties",
+      items: [
+        { tr: "Kaşarlı Tost", en: "Turkish cheddar toast", price: "£5.00" },
+        {
+          tr: "Kaşarlı Sucuklu Tost",
+          en: "Cheddar & Turkish sausage toast",
+          price: "£6.50",
+        },
+        {
+          tr: "Sebzeli Tost",
+          en: "Vegetable toast (domates, biber, kaşar)",
+          price: "£7.00",
+        },
+      ],
+    },
+    {
+      id: "corba",
+      tr: "Çorba",
+      en: "Soup",
+      items: [
+        { tr: "Mercimek Çorbası", en: "Red lentil soup", price: "£6.00" },
+        {
+          tr: "Şefin Özel Çorbası",
+          en: "Chef’s special soup · seasonal",
+          price: "£7.00",
+        },
+      ],
+    },
+    {
+      id: "ana-yemek",
+      tr: "Ana Yemek",
+      en: "Mains",
+      items: [
+        { tr: "İçli Köfte", en: "Stuffed bulgur meatballs", price: "£11.50" },
+        {
+          tr: "Mantı",
+          en: "Turkish dumplings with garlic yogurt",
+          price: "£10.00",
+        },
+        {
+          tr: "Etli Kuru Fasulye",
+          en: "White bean & lamb stew",
+          price: "£9.00",
+        },
+        { tr: "Tavuk Dürüm", en: "Chicken wrap", price: "£7.00" },
+        { tr: "Hellim Dürüm", en: "Halloumi wrap", price: "£6.00" },
+        { tr: "Hamburger", en: "Hamburger", price: "£9.00" },
+        {
+          tr: "Sucuk Ekmek",
+          en: "Turkish sausage sandwich",
+          price: "£9.00",
+        },
+        { tr: "Balık Ekmek", en: "Fish sandwich", price: "£9.00" },
+        { tr: "Köfte Ekmek", en: "Meatball sandwich", price: "£9.00" },
+      ],
+    },
+    {
+      id: "gunluk-yemek",
+      tr: "Günlük Yemek",
+      en: "Dish of the Day",
+      intro: "£9 · Served with rice and salad or cacık / Pilav ve salata veya cacık ile",
+      items: [
+        { tr: "PZT / MON", en: "Karnıyarık (Stuffed aubergine)", price: "£9.00" },
+        {
+          tr: "SAL / TUE",
+          en: "Fırında Tavuk ve Patates (Baked chicken & potatoes)",
+          price: "£9.00",
+        },
+        {
+          tr: "ÇAR / WED",
+          en: "Kuzu Etli Güveç (Lamb & vegetable casserole)",
+          price: "£9.00",
+        },
+        {
+          tr: "PER / THU",
+          en: "İzmir Köfte (Meatballs with potatoes)",
+          price: "£9.00",
+        },
+        {
+          tr: "CUM / FRI",
+          en: "Tas Kebabı (Meat stew with potatoes)",
+          price: "£9.00",
+        },
+        {
+          tr: "CMT / SAT",
+          en: "Fırında Sebzeli Makarna (Baked vegetable pasta)",
+          price: "£9.00",
+        },
+        { tr: "PAZ / SUN", en: "Tavuk Sote (Sautéed chicken)", price: "£9.00" },
+      ],
+    },
+    {
+      id: "tatlilar",
+      tr: "Tatlılar",
+      en: "Desserts",
+      items: [
+        { tr: "Şekerpare", en: "Traditional syrup dessert", price: "£2.00" },
+        { tr: "Kurabiye", en: "Cookie", price: "£1.50" },
+      ],
+    },
+    {
+      id: "icecekler",
+      tr: "İçecekler",
+      en: "Drinks",
+      items: [
+        { tr: "Türk Çayı", en: "Turkish tea", price: "£1.00" },
+        { tr: "Earl Grey Çayı", en: "Earl Grey tea", price: "£1.50" },
+        { tr: "Bitki Çayı", en: "Herbal tea", price: "£2.00" },
+        { tr: "Türk Kahvesi", en: "Turkish coffee", price: "£2.50" },
+        { tr: "Espresso", en: "Espresso", price: "£2.00" },
+        { tr: "Americano", en: "Americano", price: "£2.50" },
+        { tr: "Flat White", en: "Flat White", price: "£2.50" },
+        { tr: "Latte", en: "Latte", price: "£2.50" },
+        { tr: "Mocha", en: "Mocha", price: "£3.50" },
+        { tr: "Sıcak Çikolata", en: "Hot chocolate", price: "£2.50" },
+        { tr: "Meşrubatlar", en: "Soft drinks", price: "£1.50" },
+        { tr: "Gazlı İçecekler", en: "Fizzy drinks", price: "£1.50" },
+        { tr: "Kutu Bira", en: "Can beer", price: "£3.00" },
+        { tr: "Şişe Bira", en: "Bottle beer", price: "£4.00" },
+        {
+          tr: "Yulaf sütü / Oat milk",
+          en: "Oat milk supplement",
+          price: "+£0.50",
+        },
+      ],
+    },
+    {
+      id: "cocuk",
+      tr: "Çocuk Menüsü",
+      en: "Kids",
+      items: [
+        {
+          tr: "Tavuk Nugget ve Patates",
+          en: "Chicken nuggets & chips",
+          price: "£5.00",
+        },
+        { tr: "Köfte Pilav", en: "Meatballs & rice", price: "£7.00" },
+      ],
+    },
   ];
 
 const googleUrl = "https://www.google.com/search?q=Idea+Fabrika+London+reviews";
@@ -328,24 +549,70 @@ useEffect(() => {
       </section>
 
       <section id="menu" className="mx-auto max-w-7xl px-6 py-20">
-        <div className="grid gap-8 rounded-[2rem] bg-neutral-900 p-8 text-white md:grid-cols-2 md:p-12">
-          <div>
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-300">Food & café</div>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight">Fresh food now, full menu coming soon</h2>
-            <p className="mt-5 text-lg leading-8 text-neutral-300">
-              We currently serve fresh Kurdish and Turkish food, tea and coffee in a setting that is relaxed, friendly and rooted in the local community. Our full food menu is being updated and will be added to the site soon.
-            </p>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {cafeFeatures.map((item) => (
-              <div key={item} className="rounded-2xl bg-white/10 p-5 text-sm font-medium">
-                {item}
+        <div className="max-w-3xl">
+          <div className="text-sm font-semibold uppercase tracking-[0.2em] text-orange-700">Food & café</div>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">Our menu</h2>
+          <p className="mt-5 text-lg leading-8 text-neutral-700">
+            Fresh Kurdish and Turkish food, tea and coffee in a relaxed café setting. Prices are listed in pounds sterling.
+          </p>
+        </div>
+
+        <div className="mt-10 flex flex-wrap gap-2">
+          {menuSections.map((section) => (
+            <a
+              key={section.id}
+              href={`#menu-${section.id}`}
+              className="rounded-2xl border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-800 shadow-sm transition hover:-translate-y-0.5 hover:border-orange-200 hover:text-orange-800"
+            >
+              {section.tr}
+              <span className="ml-1 text-neutral-500">/ {section.en}</span>
+            </a>
+          ))}
+        </div>
+
+        <div className="mt-12 grid gap-6 lg:grid-cols-2">
+          {menuSections.map((section) => (
+            <div
+              key={section.id}
+              id={`menu-${section.id}`}
+              className={`scroll-mt-28 rounded-[2rem] border border-neutral-200 bg-white p-8 shadow-sm ${
+                section.id === "kahvalti" || section.id === "icecekler" ? "lg:col-span-2" : ""
+              }`}
+            >
+              <div className="flex flex-wrap items-end justify-between gap-3 border-b border-neutral-200 pb-5">
+                <div>
+                  <h3 className="text-2xl font-semibold tracking-tight text-neutral-900">
+                    {section.tr}
+                    <span className="ml-2 text-lg font-medium text-neutral-500">/ {section.en}</span>
+                  </h3>
+                  {section.intro ? (
+                    <p className="mt-2 text-sm leading-6 text-neutral-600">{section.intro}</p>
+                  ) : null}
+                </div>
               </div>
-            ))}
-            <div className="rounded-2xl border border-white/20 bg-white/5 p-5 text-sm leading-6 text-neutral-200 sm:col-span-2">
-              We are currently refreshing our food offer. A dedicated menu page with dishes and drinks will be added soon.
+
+              <ul
+                className={`mt-6 grid gap-5 ${
+                  section.id === "kahvalti" || section.id === "icecekler" ? "md:grid-cols-2" : ""
+                }`}
+              >
+                {section.items.map((item) => (
+                  <li key={`${section.id}-${item.tr}`} className="flex items-start justify-between gap-4">
+                    <div className="min-w-0">
+                      <div className="font-semibold text-neutral-900">{item.tr}</div>
+                      <div className="mt-1 text-sm leading-6 text-neutral-600">{item.en}</div>
+                      {item.note ? (
+                        <div className="mt-1 text-xs leading-5 text-orange-700">{item.note}</div>
+                      ) : null}
+                    </div>
+                    <div className="shrink-0 pt-0.5 text-sm font-semibold tabular-nums text-neutral-900">
+                      {item.price}
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
+          ))}
         </div>
       </section>
 
