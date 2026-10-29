@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CommunityKitchen from "@/components/CommunityKitchen";
 import { activities, galleryImages, highlights, site } from "@/lib/site";
 
 export default function HomePage() {
@@ -156,6 +157,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <CommunityKitchen />
     </>
   );
 }
