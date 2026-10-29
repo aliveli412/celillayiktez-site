@@ -57,8 +57,8 @@ export default function HomePage() {
           </div>
           <div className="overflow-hidden border border-[color:var(--line)]">
             <img
-              src={site.cafeGatheringSrc}
-              alt="People gathered around long tables inside Idea Fabrika"
+              src={site.cafeBusySrc}
+              alt="Busy community café with buffet and people dining at Idea Fabrika"
               className="h-full min-h-[360px] w-full object-cover"
             />
           </div>
@@ -100,8 +100,8 @@ export default function HomePage() {
           <div className="grid gap-10 md:grid-cols-[0.9fr_1.1fr] md:items-center">
             <div className="overflow-hidden border border-[color:var(--line)]">
               <img
-                src={site.potterySrc}
-                alt="Pottery workshop with people shaping clay at Idea Fabrika"
+                src={site.cafeGatheringSrc}
+                alt="People gathered around long tables inside Idea Fabrika"
                 className="h-full min-h-[420px] w-full object-cover"
               />
             </div>
@@ -130,31 +130,22 @@ export default function HomePage() {
       </section>
 
       <section className="menu-paper py-20">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 md:grid-cols-[1.05fr_0.95fr]">
-          <div>
-            <p className="font-display text-sm font-semibold uppercase tracking-[0.45em] text-[color:var(--brand)]">
-              M E N Ü &nbsp;·&nbsp; M E N U
-            </p>
-            <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight md:text-5xl">
-              Our bilingual café menu
-            </h2>
-            <p className="mt-5 max-w-xl text-lg leading-8 text-[color:var(--ink-soft)]">
-              Kahvaltı to icecekler — laid out in the spirit of our printed A4 menu, with Turkish names, English descriptions and prices.
-            </p>
-            <Link
-              href="/menu"
-              className="mt-8 inline-flex bg-[color:var(--brand)] px-8 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[color:var(--brand-deep)]"
-            >
-              Open full menu
-            </Link>
-          </div>
-          <div className="overflow-hidden border border-[color:var(--brand)]/25">
-            <img
-              src={site.breakfastSrc}
-              alt="Community breakfast buffet at Idea Fabrika"
-              className="h-full min-h-[380px] w-full object-cover"
-            />
-          </div>
+        <div className="mx-auto max-w-7xl px-6 text-center">
+          <p className="font-display text-sm font-semibold uppercase tracking-[0.45em] text-[color:var(--brand)]">
+            M E N Ü &nbsp;·&nbsp; M E N U
+          </p>
+          <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight md:text-5xl">
+            Our bilingual café menu
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-[color:var(--ink-soft)]">
+            Kahvaltı to icecekler — laid out in the spirit of our printed A4 menu, with Turkish names, English descriptions and prices.
+          </p>
+          <Link
+            href="/menu"
+            className="mt-8 inline-flex bg-[color:var(--brand)] px-8 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[color:var(--brand-deep)]"
+          >
+            Open full menu
+          </Link>
         </div>
       </section>
 
