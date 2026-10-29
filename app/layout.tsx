@@ -1,5 +1,20 @@
 import type { Metadata } from "next";
+import { Fraunces, Source_Sans_3 } from "next/font/google";
+import SiteFooter from "@/components/SiteFooter";
+import SiteHeader from "@/components/SiteHeader";
 import "./globals.css";
+
+const display = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["500", "600", "700"],
+});
+
+const body = Source_Sans_3({
+  subsets: ["latin"],
+  variable: "--font-body",
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: {
@@ -37,7 +52,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={`${display.variable} ${body.variable} antialiased`}>
+        <div className="flex min-h-screen flex-col">
+          <SiteHeader />
+          <main className="flex-1">{children}</main>
+          <SiteFooter />
+        </div>
+      </body>
     </html>
   );
 }
