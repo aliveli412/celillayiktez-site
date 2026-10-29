@@ -16,6 +16,8 @@ export const site = {
   storefrontSrc: "/images/idea-fabrika-storefront.webp",
   breakfastSrc: "/images/community-breakfast.webp",
   cafeGatheringSrc: "/images/cafe-gathering.webp",
+  cafeBusySrc: "/images/cafe-busy.webp",
+  cafeLibrarySrc: "/images/cafe-library.webp",
   potterySrc: "/images/pottery-workshop.webp",
   googleUrl: "https://www.google.com/search?q=Idea+Fabrika+London+reviews",
   umwUrl: "https://umwb.org.uk",
@@ -128,10 +130,10 @@ export const galleryImages = [
     alt: "Breakfast buffet with menemen, peppers, cheese and bread at Idea Fabrika",
   },
   {
-    title: "Inside the café",
-    caption: "A busy, welcoming room where people meet, eat and spend time together.",
-    src: "/images/cafe-gathering.webp",
-    alt: "People gathered around long tables inside Idea Fabrika",
+    title: "Tea, talk and company",
+    caption: "A warm room with books, conversation and space to feel at home.",
+    src: "/images/cafe-library.webp",
+    alt: "People drinking tea and talking beside the bookshelves at Idea Fabrika",
   },
   {
     title: "Creative workshops",
