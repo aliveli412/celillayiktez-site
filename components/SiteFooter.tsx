@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { contactDetails, navItems, site } from "@/lib/site";
+import { communityKitchen, contactDetails, navItems, site } from "@/lib/site";
 
 export default function SiteFooter() {
   return (
@@ -12,7 +12,7 @@ export default function SiteFooter() {
               {site.tagline}
             </div>
             <p className="max-w-md text-base leading-7 text-[color:var(--ink-soft)]">
-              A warm, community-led space in Stoke Newington bringing together food, culture, conversation and everyday connection.
+              Community kitchen and café of Unity of Migrant Workers — affordable, healthy food in a warm, library-like space for neighbours, families and anyone who needs a place to belong.
             </p>
             <div className="flex flex-wrap gap-3 pt-2 text-sm">
               {navItems.map((item) => (
@@ -62,11 +62,19 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-3 border-t border-[color:var(--ink-soft)]/15 pt-6 text-sm text-[color:var(--ink-soft)] md:flex-row md:items-center md:justify-between">
-          <div>
-            <span className="font-semibold text-[color:var(--ink)]">{site.name}</span> • Community café and activity space
+        <div className="mt-10 space-y-3 border-t border-[color:var(--ink-soft)]/15 pt-6 text-sm text-[color:var(--ink-soft)]">
+          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <div>
+              <span className="font-semibold text-[color:var(--ink)]">{site.name}</span> · Community kitchen of{" "}
+              <a href={site.umwUrl} target="_blank" rel="noreferrer" className="font-semibold text-[color:var(--brand)] hover:opacity-80">
+                Unity of Migrant Workers
+              </a>
+            </div>
+            <div>Registered charity in England &amp; Wales No. 1213132</div>
           </div>
-          <div>Geleneksel lezzetler ★ community spirit</div>
+          <p className="max-w-4xl leading-6">
+            {communityKitchen.body}
+          </p>
         </div>
       </div>
     </footer>

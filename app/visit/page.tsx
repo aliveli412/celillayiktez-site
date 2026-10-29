@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { contactDetails, site, visitCards } from "@/lib/site";
+import { communityKitchen, contactDetails, site, visitCards } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Visit",
@@ -16,8 +16,15 @@ export default function VisitPage() {
             Visit us in Stoke Newington
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-[color:var(--ink-soft)]">{site.visitText}</p>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-[color:var(--ink-soft)]">
+            As the community kitchen of Unity of Migrant Workers (Charity No. 1213132), we welcome everyone — including people facing economic hardship — to affordable, healthy food in a warm, calm space. If you need support with a free meal, please speak to the team when you visit.
+          </p>
 
           <div className="mt-10 space-y-5 border border-[color:var(--line)] bg-white p-8">
+            <div>
+              <div className="text-xs uppercase tracking-[0.16em] text-[color:var(--ink-soft)]">Community kitchen</div>
+              <div className="mt-1 font-medium text-[color:var(--ink)]">{communityKitchen.title}</div>
+            </div>
             {visitCards.map(([label, value]) => (
               <div key={label}>
                 <div className="text-xs uppercase tracking-[0.16em] text-[color:var(--ink-soft)]">{label}</div>

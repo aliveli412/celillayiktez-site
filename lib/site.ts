@@ -18,6 +18,24 @@ export const site = {
   cafeGatheringSrc: "/images/cafe-gathering.webp",
   potterySrc: "/images/pottery-workshop.webp",
   googleUrl: "https://www.google.com/search?q=Idea+Fabrika+London+reviews",
+  umwUrl: "https://umwb.org.uk",
+};
+
+export const communityKitchen = {
+  eyebrow: "Community kitchen",
+  title: "Affordable, healthy food in a warm community space",
+  lead:
+    "Idea Fabrika is the community kitchen and café of Unity of Migrant Workers (UMW), a registered charity in England and Wales (Charity No. 1213132).",
+  body:
+    "We serve affordable, healthy Kurdish and Turkish food in a welcoming setting with a library-like atmosphere — a place to eat, rest, read and feel at home. For people facing economic hardship, Idea Fabrika offers a warm room, company and dignified access to food and drink. Where needed, free meals and support can also be arranged for those who need them most.",
+  points: [
+    "Community kitchen of Unity of Migrant Workers",
+    "Charity No. 1213132 (England & Wales)",
+    "Affordable and healthy everyday meals",
+    "Warm space with a calm, library-like feel",
+    "Support for people facing economic difficulty",
+    "Free meals available for those in need",
+  ],
 };
 
 export const navItems = [
@@ -56,7 +74,8 @@ export const activities = [
 
 export const infoCards = [
   ["Location", "53 Stoke Newington High Street, London N16 8EL"],
-  ["Focus", "Food, community and cultural connection"],
+  ["Run by", "Unity of Migrant Workers (Charity No. 1213132)"],
+  ["Focus", "Community kitchen, food, culture and connection"],
   ["Style", "Warm, inclusive, practical"],
   ["Audience", "Local residents, families and migrant communities"],
 ] as const;
