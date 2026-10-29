@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-7xl px-6 py-16 md:py-24">
-      <div className="grid gap-12 md:grid-cols-[1.2fr_0.8fr] md:items-start">
+      <div className="grid gap-12 md:grid-cols-[1.15fr_0.85fr] md:items-start">
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[color:var(--brand)]">About Idea Fabrika</p>
           <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight md:text-5xl">{site.aboutTitle}</h1>
@@ -38,8 +38,21 @@ export default function AboutPage() {
         </aside>
       </div>
 
-      <div className="mt-16 overflow-hidden border border-[color:var(--line)]">
-        <img src={site.storefrontSrc} alt="Idea Fabrika storefront" className="h-[420px] w-full object-cover" />
+      <div className="mt-16 grid gap-5 md:grid-cols-[1.2fr_0.8fr]">
+        <div className="overflow-hidden border border-[color:var(--line)]">
+          <img
+            src={site.cafeGatheringSrc}
+            alt="Community gathering inside Idea Fabrika"
+            className="h-[420px] w-full object-cover"
+          />
+        </div>
+        <div className="overflow-hidden border border-[color:var(--line)]">
+          <img
+            src={site.storefrontSrc}
+            alt="Idea Fabrika storefront"
+            className="h-[420px] w-full object-cover"
+          />
+        </div>
       </div>
     </div>
   );

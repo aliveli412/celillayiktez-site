@@ -14,6 +14,9 @@ export const site = {
     "Drop in for food, tea, activities or a quiet moment during the day. Whether you are visiting for the first time or already know the space well, Idea Fabrika is here to offer a warm welcome.",
   logoSrc: "/images/idea-fabrika-logo.webp",
   storefrontSrc: "/images/idea-fabrika-storefront.webp",
+  breakfastSrc: "/images/community-breakfast.webp",
+  cafeGatheringSrc: "/images/cafe-gathering.webp",
+  potterySrc: "/images/pottery-workshop.webp",
   googleUrl: "https://www.google.com/search?q=Idea+Fabrika+London+reviews",
 };
 
@@ -100,15 +103,21 @@ export const blogPosts = [
 
 export const galleryImages = [
   {
-    title: "Food & café",
-    note: "Real food and café photos can be added here next.",
+    title: "Shared breakfast",
+    caption: "Fresh food laid out for community and everyday hospitality.",
+    src: "/images/community-breakfast.webp",
+    alt: "Breakfast buffet with menemen, peppers, cheese and bread at Idea Fabrika",
   },
   {
-    title: "Community activities",
-    note: "Add a real image from classes, workshops or a relaxed community moment.",
+    title: "Inside the café",
+    caption: "A busy, welcoming room where people meet, eat and spend time together.",
+    src: "/images/cafe-gathering.webp",
+    alt: "People gathered around long tables inside Idea Fabrika",
   },
   {
-    title: "Inside the space",
-    note: "Add an interior photo that shows the atmosphere and layout.",
+    title: "Creative workshops",
+    caption: "Hands-on sessions that bring neighbours together through making and learning.",
+    src: "/images/pottery-workshop.webp",
+    alt: "Pottery workshop with people shaping clay at Idea Fabrika",
   },
 ];
