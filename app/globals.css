@@ -85,12 +85,6 @@ body {
   animation: soft-pan 7s ease-out both;
 }
 
-.hero-portrait {
-  filter: grayscale(1) contrast(1.05) brightness(0.92);
-  opacity: 0.92;
-  mix-blend-mode: multiply;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .motion-fade-up,
   .motion-fade-up-delay,

@@ -8,7 +8,7 @@ const gateways = [
     text: site.homeIntro,
     href: "/hakkinda",
     heading: "Pek. Muh. Celil Layiktez K∴ hakkında",
-    image: site.heroPanelKimdir,
+    image: site.heroPanelKimdirOriginal,
   },
   {
     n: "02",
@@ -24,7 +24,7 @@ const gateways = [
     text: "Pek Muh. Üstadımız Celil Layiktez’in yayınlanmış makalelerine buradaki linkten ulaşabilirsiniz.",
     href: "/makaleler",
     heading: "Makaleleri",
-    image: site.heroPanelKimdir,
+    image: site.heroPanelKimdirOriginal,
   },
 ] as const;
 
@@ -33,33 +33,30 @@ export default function HomePage() {
 
   return (
     <>
+      {/*
+        Use the live WP designed hero panel (emblem + tuxedo portrait) full-bleed —
+        same composition as celillayiktez.com, without stacking the flash apron cutout.
+      */}
       <section className="relative overflow-hidden text-white">
         <div
-          className="motion-hero-media absolute inset-0 bg-cover bg-center"
+          className="motion-hero-media absolute inset-0 scale-[1.02] bg-cover bg-[center_right] md:bg-center"
           style={{ backgroundImage: `url(${featured.image})` }}
         />
-        <div className="absolute inset-0 bg-[color:var(--brand)]/90" />
-        <div className="relative mx-auto grid max-w-7xl items-end gap-6 px-6 pt-10 md:grid-cols-[1.25fr_0.75fr] md:pt-12">
-          <div className="pb-10 md:pb-12">
-            <h1 className="motion-fade-up font-display text-3xl leading-[1.12] tracking-tight text-white md:text-[2.75rem] lg:text-5xl">
+        <div className="absolute inset-0 bg-gradient-to-r from-[color:var(--brand)] from-0% via-[color:var(--brand)]/75 via-45% to-transparent to-78%" />
+        <div className="relative mx-auto flex min-h-[64vh] max-w-7xl items-center px-6 py-16 md:min-h-[68vh] md:py-20">
+          <div className="max-w-xl md:max-w-2xl">
+            <h1 className="motion-fade-up font-display text-3xl leading-[1.12] tracking-tight text-white md:text-[2.85rem] lg:text-5xl">
               {featured.heading}
             </h1>
-            <p className="motion-fade-up-delay mt-4 max-w-2xl text-[15px] leading-7 text-white md:text-base md:leading-8">
+            <p className="motion-fade-up-delay mt-5 text-[15px] leading-7 text-white md:text-base md:leading-8">
               {featured.text}
             </p>
             <Link
               href={featured.href}
-              className="motion-fade-up-delay-2 mt-6 inline-flex bg-black px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-black/85"
+              className="motion-fade-up-delay-2 mt-7 inline-flex bg-black px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-black/85"
             >
               devamı için tıkla →
             </Link>
-          </div>
-          <div className="motion-fade-up-delay relative mx-auto hidden w-full max-w-[220px] justify-self-end md:block lg:max-w-[260px]">
-            <img
-              src={site.portraitSrc}
-              alt="Pek Muh. Celil Layiktez"
-              className="hero-portrait relative z-10 max-h-[420px] w-full object-contain object-bottom"
-            />
           </div>
         </div>
       </section>
@@ -93,19 +90,34 @@ export default function HomePage() {
             </Link>
           ))}
         </div>
-        <div className="mx-auto max-w-7xl px-6 pb-0">
+        <div className="mx-auto max-w-7xl px-6">
           <div className="h-1 w-full bg-[color:var(--brand)]" />
         </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-16 md:py-20">
-        <div className="max-w-3xl">
-          <p className="text-xs font-bold uppercase tracking-[0.28em] text-[color:var(--brand)]">Anı</p>
-          <h2 className="mt-3 font-display text-3xl tracking-tight md:text-4xl">
-            Araştırmaları bu sitede yaşatılır
-          </h2>
-          <p className="mt-5 text-base leading-8 text-[color:var(--ink-soft)]">{site.homeLead}</p>
-          <p className="mt-3 text-sm tracking-[0.08em] text-[color:var(--ink-soft)]">{site.dates}</p>
+        <div className="grid gap-10 md:grid-cols-[0.9fr_1.1fr] md:items-center">
+          <div className="overflow-hidden border border-[color:var(--line)] bg-[color:var(--paper-soft)]">
+            <img
+              src={site.heroPortraitQuality}
+              alt="Pek Muh. Celil Layiktez"
+              className="aspect-[4/5] w-full object-cover object-top"
+            />
+          </div>
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-[color:var(--brand)]">Anı</p>
+            <h2 className="mt-3 font-display text-3xl tracking-tight md:text-4xl">
+              Araştırmaları bu sitede yaşatılır
+            </h2>
+            <p className="mt-5 text-base leading-8 text-[color:var(--ink-soft)]">{site.homeLead}</p>
+            <p className="mt-3 text-sm tracking-[0.08em] text-[color:var(--ink-soft)]">{site.dates}</p>
+            <Link
+              href="/hakkinda"
+              className="mt-8 inline-flex text-sm font-bold text-[color:var(--brand)] hover:text-[color:var(--brand-deep)]"
+            >
+              Hakkında devamı →
+            </Link>
+          </div>
         </div>
       </section>
 

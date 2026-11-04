@@ -15,8 +15,10 @@ export const site = {
   logoMarkSrc: "/brand/logo-dark.png",
   portraitSrc: "/brand/Celil_Layiktez_MK.png",
   faviconSrc: "/brand/cropped-fav-270x270.png",
-  heroPanelKimdir: "/brand/Celil-Layiktez-Kimdir.png",
+  heroPanelKimdir: "/brand/hero-banner.png",
+  heroPanelKimdirOriginal: "/brand/Celil-Layiktez-Kimdir.png",
   heroPanelKitaplar: "/brand/Celil-Layiktez-Kitaplari.png",
+  heroPortraitQuality: "/brand/hero-portrait-natural.jpg",
   gallery: [
     {
       src: "/brand/Pek-Muh.-Celil-Layiktez-K.miz-50.yil-onlugu-takdimi-A.jpg",
