@@ -1,47 +1,36 @@
 import type { Metadata } from "next";
-import { Fraunces, Source_Sans_3 } from "next/font/google";
+import { Fira_Sans } from "next/font/google";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
+import { site } from "@/lib/site";
 import "./globals.css";
 
-const display = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-display",
-  weight: ["500", "600", "700"],
-});
-
-const body = Source_Sans_3({
-  subsets: ["latin"],
+const body = Fira_Sans({
+  subsets: ["latin", "latin-ext"],
   variable: "--font-body",
   weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "Idea Fabrika",
-    template: "%s | Idea Fabrika",
+    default: "Celil Layiktez",
+    template: "%s | Celil Layiktez",
   },
   description:
-    "Idea Fabrika is a community café and social space in Stoke Newington, bringing together food, culture and community.",
-  applicationName: "Idea Fabrika",
+    "Pek Muh. Celil Layiktez’in yaşamı, kitapları, makaleleri ve dergi arşivleri — Türkiye’de Masonluk tarihi araştırmaları.",
+  applicationName: "Celil Layiktez",
   icons: {
-    icon: [{ url: "/icon.png", type: "image/png" }],
-    apple: [{ url: "/apple-icon.png", type: "image/png" }],
+    icon: [{ url: site.faviconSrc, type: "image/png" }],
+    apple: [{ url: site.faviconSrc, type: "image/png" }],
   },
   openGraph: {
-    title: "Idea Fabrika",
+    title: "Celil Layiktez",
     description:
-      "Idea Fabrika is a community café and social space in Stoke Newington, bringing together food, culture and community.",
-    url: "https://ideafabrika.co.uk",
-    siteName: "Idea Fabrika",
-    locale: "en_GB",
+      "Pek Muh. Celil Layiktez’in yaşamı, kitapları, makaleleri ve dergi arşivleri.",
+    url: site.url,
+    siteName: "Celil Layiktez",
+    locale: "tr_TR",
     type: "website",
-  },
-  twitter: {
-    card: "summary",
-    title: "Idea Fabrika",
-    description:
-      "Idea Fabrika is a community café and social space in Stoke Newington, bringing together food, culture and community.",
   },
 };
 
@@ -51,8 +40,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${display.variable} ${body.variable} antialiased`}>
+    <html lang="tr">
+      <body className={`${body.variable} antialiased`}>
         <div className="flex min-h-screen flex-col">
           <SiteHeader />
           <main className="flex-1">{children}</main>

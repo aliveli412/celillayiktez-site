@@ -1,6 +1,6 @@
-# Idea Fabrika
+# Celil Layiktez
 
-Website for Idea Fabrika — a community café and social space in Stoke Newington, London.
+Modern rebuild of [celillayiktez.com](https://www.celillayiktez.com) — memorial and research archive for Pek Muh. Celil Layiktez.
 
 ## Local development
 
@@ -11,6 +11,10 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-## Deploy
+## Media policy
 
-Production is hosted on Vercel and serves [ideafabrika.co.uk](https://www.ideafabrika.co.uk). Pushing to `main` deploys automatically.
+Book and magazine files (PDFs, flipbooks, covers) remain on the existing WordPress uploads host. This app links to those URLs and does not vendor the binaries.
+
+## Stack
+
+Next.js (App Router) · React · Tailwind CSS · Fira Sans brand typography

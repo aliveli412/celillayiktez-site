@@ -1,81 +1,47 @@
 import Link from "next/link";
-import { communityKitchen, contactDetails, navItems, site } from "@/lib/site";
+import { navItems, site } from "@/lib/site";
 
 export default function SiteFooter() {
   return (
-    <footer className="border-t border-[color:var(--ink-soft)]/15 bg-white">
-      <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr_1fr]">
-          <div className="flex flex-col items-start gap-4">
-            <img src={site.logoSrc} alt="Idea Fabrika logo" className="h-20 w-auto object-contain" />
-            <div className="font-[family-name:var(--font-display)] text-sm tracking-[0.18em] text-[color:var(--brand)]">
-              {site.tagline}
-            </div>
-            <p className="max-w-md text-base leading-7 text-[color:var(--ink-soft)]">
-              Community kitchen and café of Unity of Migrant Workers — affordable, healthy food in a warm, library-like space for neighbours, families and anyone who needs a place to belong.
-            </p>
-            <div className="flex flex-wrap gap-3 pt-2 text-sm">
+    <footer className="border-t border-[color:var(--line)] bg-[color:var(--header)] text-white">
+      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 md:grid-cols-[1.2fr_1fr]">
+        <div>
+          <img src={site.logoSrc} alt="Celil Layiktez" className="h-12 w-auto object-contain" />
+          <p className="mt-4 max-w-md text-sm leading-7 text-white/70">
+            Pek Muh. Celil Layiktez’in (1935–2020) yaşamı, yayınları ve dergi arşivleri. Kitap ve dergi
+            dosyaları mevcut WordPress yüklemelerinde tutulur; bu site temiz yönlendirme ve okuma
+            deneyimi sunar.
+          </p>
+        </div>
+        <div className="grid gap-8 sm:grid-cols-2">
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-[color:var(--brand)]">Sayfalar</h3>
+            <div className="mt-4 flex flex-col gap-2 text-sm text-white/80">
               {navItems.map((item) => (
-                <Link key={item.href} href={item.href} className="text-[color:var(--ink)] transition hover:text-[color:var(--brand)]">
+                <Link key={item.href} href={item.href} className="hover:text-white">
                   {item.label}
                 </Link>
               ))}
             </div>
           </div>
-
           <div>
-            <h3 className="font-[family-name:var(--font-display)] text-lg font-semibold text-[color:var(--ink)]">Contact</h3>
-            <div className="mt-5 space-y-4 text-sm text-[color:var(--ink-soft)]">
-              {contactDetails.map(([label, value]) => (
-                <div key={label}>
-                  <div className="font-semibold text-[color:var(--ink)]">{label}</div>
-                  {label === "Email" ? (
-                    <a href={`mailto:${value}`} className="transition hover:opacity-70">
-                      {value}
-                    </a>
-                  ) : label === "Phone" ? (
-                    <a href="tel:02033972266" className="transition hover:opacity-70">
-                      {value}
-                    </a>
-                  ) : (
-                    <div>{value}</div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h3 className="font-[family-name:var(--font-display)] text-lg font-semibold text-[color:var(--ink)]">Find us</h3>
-            <div className="mt-5 overflow-hidden border border-[color:var(--ink-soft)]/20 bg-[color:var(--paper)] shadow-sm">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2050.9516447575693!2d-0.07711342417442502!3d51.55868100695681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761dc13ad79247%3A0x772588f023f63158!2sIdea%20Fabrika%20London!5e1!3m2!1sen!2suk!4v1773407210877!5m2!1sen!2suk"
-                width="100%"
-                height="256"
-                style={{ border: 0 }}
-                allowFullScreen={true}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Idea Fabrika London Map"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-10 space-y-3 border-t border-[color:var(--ink-soft)]/15 pt-6 text-sm text-[color:var(--ink-soft)]">
-          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-            <div>
-              <span className="font-semibold text-[color:var(--ink)]">{site.name}</span> · Community kitchen of{" "}
-              <a href={site.umwUrl} target="_blank" rel="noreferrer" className="font-semibold text-[color:var(--brand)] hover:opacity-80">
-                Unity of Migrant Workers
+            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-[color:var(--brand)]">İletişim</h3>
+            <div className="mt-4 space-y-2 text-sm text-white/80">
+              <a href={`mailto:${site.email}`} className="block hover:text-white">
+                {site.email}
+              </a>
+              <a href={site.facebook} target="_blank" rel="noreferrer" className="block hover:text-white">
+                Facebook
+              </a>
+              <a href={site.twitter} target="_blank" rel="noreferrer" className="block hover:text-white">
+                X / Twitter
               </a>
             </div>
-            <div>Registered charity in England &amp; Wales No. 1213132</div>
           </div>
-          <p className="max-w-4xl leading-6">
-            {communityKitchen.body}
-          </p>
         </div>
+      </div>
+      <div className="border-t border-white/10 px-6 py-5 text-center text-xs text-white/50">
+        © {new Date().getFullYear()} {site.name} · {site.dates}
       </div>
     </footer>
   );

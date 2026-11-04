@@ -1,155 +1,148 @@
 import Link from "next/link";
-import CommunityKitchen from "@/components/CommunityKitchen";
-import { activities, galleryImages, highlights, site } from "@/lib/site";
+import { archives, site } from "@/lib/site";
 
 export default function HomePage() {
   return (
     <>
-      <section className="relative min-h-[88vh] overflow-hidden">
+      <section className="relative min-h-[88vh] overflow-hidden bg-[color:var(--header)] text-white">
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${site.storefrontSrc})` }}
+          className="motion-hero-media absolute inset-0 bg-cover bg-center opacity-40"
+          style={{ backgroundImage: `url(${site.heroPanelKimdir})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[color:var(--ink)]/88 via-[color:var(--ink)]/72 to-[color:var(--brand)]/35" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/75 to-[color:var(--brand)]/35" />
         <div className="relative mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-end px-6 pb-16 pt-28 md:justify-center md:pb-24">
-          <p className="font-display text-sm font-semibold uppercase tracking-[0.35em] text-white/80">
-            Idea Fabrika
+          <p className="motion-fade-up text-sm font-bold uppercase tracking-[0.35em] text-white/75">
+            Celil Layiktez
           </p>
-          <h1 className="mt-4 max-w-3xl font-display text-5xl font-semibold leading-[1.05] tracking-tight text-white md:text-7xl">
-            {site.heroTitle}
+          <h1 className="motion-fade-up-delay mt-4 max-w-4xl font-display text-4xl leading-[1.08] tracking-tight md:text-6xl lg:text-7xl">
+            Pek Muh. Celil Layiktez
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-white/85">{site.heroText}</p>
-          <div className="mt-10 flex flex-wrap gap-4">
+          <p className="motion-fade-up-delay-2 mt-5 max-w-2xl text-base leading-8 text-white/85 md:text-lg">
+            {site.homeLead}
+          </p>
+          <p className="motion-fade-up-delay-2 mt-3 text-sm tracking-[0.12em] text-white/55">{site.dates}</p>
+          <div className="motion-fade-up-delay-2 mt-10 flex flex-wrap gap-4">
             <Link
-              href="/menu"
-              className="bg-[color:var(--brand)] px-7 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[color:var(--brand-deep)]"
+              href="/hakkinda"
+              className="bg-[color:var(--brand)] px-7 py-3 text-xs font-bold uppercase tracking-[0.18em] text-white transition hover:bg-[color:var(--brand-deep)]"
             >
-              View menu
+              Hakkında
             </Link>
             <Link
-              href="/visit"
-              className="border border-white/70 px-7 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-white/10"
+              href="/kitaplar"
+              className="border border-white/70 px-7 py-3 text-xs font-bold uppercase tracking-[0.18em] text-white transition hover:bg-white/10"
             >
-              Visit us
+              Online Kitaplar
             </Link>
           </div>
         </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-20">
-        <div className="grid gap-10 md:grid-cols-[1.05fr_0.95fr] md:items-center">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[color:var(--brand)]">Welcome</p>
-            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight md:text-5xl">
-              Food, community and culture in Stoke Newington
-            </h2>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-[color:var(--ink-soft)]">
-              Alongside fresh Kurdish and Turkish food, Idea Fabrika offers a welcoming space shaped by connection and everyday community life.
-            </p>
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              {highlights.map((item) => (
-                <div key={item} className="border border-[color:var(--line)] bg-white/70 px-4 py-3 text-sm font-medium">
-                  <span className="mr-2 text-[color:var(--brand)]">★</span>
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="overflow-hidden border border-[color:var(--line)]">
+        <div className="grid gap-12 md:grid-cols-[0.9fr_1.1fr] md:items-center">
+          <div className="overflow-hidden border border-[color:var(--line)] bg-[color:var(--paper-soft)]">
             <img
-              src={site.cafeBusySrc}
-              alt="Busy community café with buffet and people dining at Idea Fabrika"
-              className="h-full min-h-[360px] w-full object-cover"
+              src={site.portraitSrc}
+              alt="Pek Muh. Celil Layiktez"
+              className="mx-auto h-auto max-h-[520px] w-full object-contain object-top"
             />
           </div>
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-[color:var(--brand)]">Hakkında</p>
+            <h2 className="mt-3 font-display text-3xl tracking-tight md:text-4xl">
+              Pek. Muh. Celil Layiktez K∴ hakkında
+            </h2>
+            <div className="brand-rule mt-5 w-40" />
+            <p className="mt-6 text-base leading-8 text-[color:var(--ink-soft)] md:text-lg">{site.homeIntro}</p>
+            <Link
+              href="/hakkinda"
+              className="mt-8 inline-flex text-sm font-bold uppercase tracking-[0.16em] text-[color:var(--brand)] hover:text-[color:var(--brand-deep)]"
+            >
+              Devamı için tıkla →
+            </Link>
+          </div>
         </div>
       </section>
 
-      <section className="border-y border-[color:var(--line)] bg-white py-20">
-        <div className="mx-auto max-w-7xl px-6">
+      <section className="border-y border-[color:var(--line)] bg-[color:var(--paper-band)] py-20">
+        <div className="mx-auto grid max-w-7xl gap-6 px-6 md:grid-cols-3">
+          {[
+            {
+              n: "01",
+              title: "Hakkında",
+              text: "Yaşamöyküsü, eğitim, iş yaşamı ve masonik çalışmalar.",
+              href: "/hakkinda",
+            },
+            {
+              n: "02",
+              title: "Online Kitaplar",
+              text: "Yayınlanmış kitapların dijital sürümleri (WordPress yüklemeleri).",
+              href: "/kitaplar",
+            },
+            {
+              n: "03",
+              title: "Makaleler",
+              text: "Mimar Sinan, Tesviye ve uluslararası yayınlardaki yazılar.",
+              href: "/makaleler",
+            },
+          ].map((card) => (
+            <Link
+              key={card.n}
+              href={card.href}
+              className="group border border-[color:var(--line)] bg-white p-8 transition hover:border-[color:var(--brand)]"
+            >
+              <div className="text-xs font-bold tracking-[0.25em] text-[color:var(--brand)]">{card.n}</div>
+              <h3 className="mt-4 font-display text-2xl group-hover:text-[color:var(--brand)]">{card.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">{card.text}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden py-20">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-15"
+          style={{ backgroundImage: `url(${site.heroPanelKitaplar})` }}
+        />
+        <div className="relative mx-auto max-w-7xl px-6">
           <div className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[color:var(--brand)]">Life here</p>
-            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight">Moments from the space</h2>
-            <p className="mt-5 text-lg leading-8 text-[color:var(--ink-soft)]">
-              Shared meals, busy tables and creative workshops — the everyday life of Idea Fabrika.
+            <p className="text-xs font-bold uppercase tracking-[0.28em] text-[color:var(--brand)]">Yayınlar</p>
+            <h2 className="mt-3 font-display text-3xl md:text-4xl">Kitaplar ve dergi arşivleri</h2>
+            <p className="mt-5 text-base leading-8 text-[color:var(--ink-soft)]">
+              Kitap kapakları ve dergi PDF’leri eski WordPress yüklemelerinde kalır; buradan güvenli
+              bağlantılarla açılır.
             </p>
           </div>
-
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {galleryImages.map((image) => (
-              <figure key={image.title} className="group">
-                <div className="overflow-hidden border border-[color:var(--line)]">
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
-                  />
-                </div>
-                <figcaption className="mt-4">
-                  <div className="font-display text-xl font-semibold">{image.title}</div>
-                  <p className="mt-1 text-sm leading-6 text-[color:var(--ink-soft)]">{image.caption}</p>
-                </figcaption>
-              </figure>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {archives.map((archive) => (
+              <Link
+                key={archive.slug}
+                href={`/arsivler/${archive.slug}`}
+                className="border border-[color:var(--line)] bg-white/90 px-5 py-4 transition hover:border-[color:var(--brand)]"
+              >
+                <div className="font-display text-lg">{archive.title}</div>
+                {archive.years ? (
+                  <div className="mt-1 text-xs tracking-wide text-[color:var(--ink-soft)]">{archive.years}</div>
+                ) : null}
+              </Link>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="py-20">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="grid gap-10 md:grid-cols-[0.9fr_1.1fr] md:items-center">
-            <div className="overflow-hidden border border-[color:var(--line)]">
-              <img
-                src={site.cafeGatheringSrc}
-                alt="People gathered around long tables inside Idea Fabrika"
-                className="h-full min-h-[420px] w-full object-cover"
-              />
-            </div>
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[color:var(--brand)]">What we do</p>
-              <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight">One shared space</h2>
-              <div className="mt-8 space-y-6">
-                {activities.map((section) => (
-                  <article key={section.title}>
-                    <h3 className="font-display text-2xl font-semibold">{section.title}</h3>
-                    <p className="mt-2 text-base leading-7 text-[color:var(--ink-soft)]">{section.text}</p>
-                  </article>
-                ))}
-              </div>
-              <div className="mt-10 flex flex-wrap gap-4">
-                <Link href="/activities" className="text-sm font-semibold uppercase tracking-[0.18em] text-[color:var(--brand)]">
-                  Explore activities →
-                </Link>
-                <Link href="/about" className="text-sm font-semibold uppercase tracking-[0.18em] text-[color:var(--ink)]">
-                  About Idea Fabrika →
-                </Link>
-              </div>
-            </div>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link
+              href="/kitaplar"
+              className="bg-[color:var(--brand)] px-6 py-3 text-xs font-bold uppercase tracking-[0.18em] text-white hover:bg-[color:var(--brand-deep)]"
+            >
+              Kitaplara git
+            </Link>
+            <Link
+              href="/arsivler"
+              className="border border-[color:var(--ink)]/20 px-6 py-3 text-xs font-bold uppercase tracking-[0.18em] hover:border-[color:var(--brand)]"
+            >
+              Tüm arşivler
+            </Link>
           </div>
         </div>
       </section>
-
-      <section className="menu-paper py-20">
-        <div className="mx-auto max-w-7xl px-6 text-center">
-          <p className="font-display text-sm font-semibold uppercase tracking-[0.45em] text-[color:var(--brand)]">
-            M E N Ü &nbsp;·&nbsp; M E N U
-          </p>
-          <h2 className="mt-4 font-display text-4xl font-semibold tracking-tight md:text-5xl">
-            Our bilingual café menu
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-[color:var(--ink-soft)]">
-            Kahvaltı to icecekler — laid out in the spirit of our printed A4 menu, with Turkish names, English descriptions and prices.
-          </p>
-          <Link
-            href="/menu"
-            className="mt-8 inline-flex bg-[color:var(--brand)] px-8 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[color:var(--brand-deep)]"
-          >
-            Open full menu
-          </Link>
-        </div>
-      </section>
-
-      <CommunityKitchen />
     </>
   );
 }

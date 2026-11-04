@@ -1,13 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --paper: #f4efe6;
-  --paper-deep: #ebe3d4;
-  --ink: #1b1410;
-  --ink-soft: #5c534c;
-  --brand: #c8102e;
-  --brand-deep: #9e0c24;
-  --line: rgba(27, 20, 16, 0.18);
+  --paper: #ffffff;
+  --paper-soft: #efefef;
+  --paper-band: #f7f7f7;
+  --ink: #222222;
+  --ink-soft: #757575;
+  --brand: #ce1b28;
+  --brand-deep: #b21f28;
+  --brand-dark: #8e1118;
+  --line: #e1e1e1;
+  --header: #1a1a1a;
   --background: var(--paper);
   --foreground: var(--ink);
 }
@@ -16,40 +19,77 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-body);
-  --font-display: var(--font-display);
 }
 
 body {
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-body), "Segoe UI", sans-serif;
+  font-family: var(--font-body), "Fira Sans", "Segoe UI", sans-serif;
+}
+
+::selection {
+  background: var(--brand);
+  color: #fff;
 }
 
 .font-display {
-  font-family: var(--font-display), Georgia, serif;
+  font-family: var(--font-body), "Fira Sans", sans-serif;
+  font-weight: 700;
 }
 
-.menu-paper {
-  background-color: var(--paper);
+.brand-rule {
+  height: 3px;
+  background: linear-gradient(90deg, var(--brand), transparent 85%);
+}
+
+.archive-haze {
+  background-color: var(--paper-band);
   background-image:
-    radial-gradient(ellipse at top, rgba(200, 16, 46, 0.05), transparent 55%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.35), transparent 28%),
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(27, 20, 16, 0.015) 2px,
-      rgba(27, 20, 16, 0.015) 3px
-    );
+    radial-gradient(ellipse at top left, rgba(206, 27, 40, 0.06), transparent 50%),
+    linear-gradient(180deg, #fff 0%, var(--paper-band) 100%);
 }
 
-.menu-rule {
-  border-color: color-mix(in srgb, var(--brand) 55%, transparent);
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.menu-dots {
-  background-image: radial-gradient(circle, color-mix(in srgb, var(--ink) 35%, transparent) 1px, transparent 1.5px);
-  background-position: bottom;
-  background-repeat: repeat-x;
-  background-size: 6px 2px;
+@keyframes soft-pan {
+  from {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+.motion-fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
+
+.motion-fade-up-delay {
+  animation: fade-up 0.8s ease-out 0.12s both;
+}
+
+.motion-fade-up-delay-2 {
+  animation: fade-up 0.85s ease-out 0.24s both;
+}
+
+.motion-hero-media {
+  animation: soft-pan 8s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-fade-up,
+  .motion-fade-up-delay,
+  .motion-fade-up-delay-2,
+  .motion-hero-media {
+    animation: none;
+  }
 }
