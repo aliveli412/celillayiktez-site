@@ -11,7 +11,8 @@ export const site = {
   email: "info@celillayiktez.com",
   url: "https://www.celillayiktez.com",
   logoSrc: "/brand/Celil-Layiktez-Logox300x142.png",
-  logoMarkSrc: "/brand/Celil-Layiktez-Logo.png",
+  logoDarkSrc: "/brand/logo-dark-2x.png",
+  logoMarkSrc: "/brand/logo-dark.png",
   portraitSrc: "/brand/Celil_Layiktez_MK.png",
   faviconSrc: "/brand/cropped-fav-270x270.png",
   heroPanelKimdir: "/brand/Celil-Layiktez-Kimdir.png",
@@ -39,10 +40,10 @@ export const site = {
 
 export const navItems = [
   { label: "Hakkında", href: "/hakkinda" },
-  { label: "Fotoğraf", href: "/fotograf" },
-  { label: "Makaleler", href: "/makaleler" },
+  { label: "Fotoğraf Galerisi", href: "/fotograf" },
+  { label: "Makaleleri", href: "/makaleler" },
   { label: "Dergi Arşivleri", href: "/arsivler" },
-  { label: "Online Kitaplar", href: "/kitaplar" },
+  { label: "Online Kitapları", href: "/kitaplar" },
   { label: "Bizimle paylaş", href: "/bizimle-paylas" },
 ];
 
