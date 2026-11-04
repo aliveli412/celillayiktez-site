@@ -39,26 +39,26 @@ export default function HomePage() {
           style={{ backgroundImage: `url(${featured.image})` }}
         />
         <div className="absolute inset-0 bg-[color:var(--brand)]/90" />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-6 px-6 py-12 md:grid-cols-[1.2fr_0.8fr] md:py-14 lg:min-h-[52vh]">
-          <div>
-            <h1 className="motion-fade-up font-display text-3xl leading-[1.12] tracking-tight text-white md:text-5xl">
+        <div className="relative mx-auto grid max-w-7xl items-end gap-6 px-6 pt-10 md:grid-cols-[1.25fr_0.75fr] md:pt-12">
+          <div className="pb-10 md:pb-12">
+            <h1 className="motion-fade-up font-display text-3xl leading-[1.12] tracking-tight text-white md:text-[2.75rem] lg:text-5xl">
               {featured.heading}
             </h1>
-            <p className="motion-fade-up-delay mt-5 max-w-2xl text-base leading-8 text-white md:text-lg">
+            <p className="motion-fade-up-delay mt-4 max-w-2xl text-[15px] leading-7 text-white md:text-base md:leading-8">
               {featured.text}
             </p>
             <Link
               href={featured.href}
-              className="motion-fade-up-delay-2 mt-7 inline-flex bg-black px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-black/85"
+              className="motion-fade-up-delay-2 mt-6 inline-flex bg-black px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-black/85"
             >
               devamı için tıkla →
             </Link>
           </div>
-          <div className="motion-fade-up-delay relative mx-auto hidden w-full max-w-xs justify-self-end md:block lg:max-w-sm">
+          <div className="motion-fade-up-delay relative mx-auto hidden w-full max-w-[220px] justify-self-end md:block lg:max-w-[260px]">
             <img
               src={site.portraitSrc}
               alt="Pek Muh. Celil Layiktez"
-              className="hero-portrait relative z-10 w-full object-contain object-bottom"
+              className="hero-portrait relative z-10 max-h-[420px] w-full object-contain object-bottom"
             />
           </div>
         </div>
