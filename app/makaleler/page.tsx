@@ -3,19 +3,20 @@ import { articles } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Makaleler",
-  description: "Celil Layiktez’in yayınlanmış makaleleri",
+  description: "Celil Layiktez makaleleri",
 };
 
 export default function MakalelerPage() {
   return (
-    <div className="mx-auto max-w-7xl px-6 py-16 md:py-20">
-      <p className="text-xs font-bold uppercase tracking-[0.28em] text-[color:var(--brand)]">Yazılar</p>
-      <h1 className="mt-3 font-display text-4xl tracking-tight md:text-5xl">Makaleler</h1>
-      <p className="mt-5 max-w-3xl text-base leading-8 text-[color:var(--ink-soft)]">
-        Pek Muh. Üstadımız Celil Layiktez’in yayınlanmış makaleleri. Tam metinler şimdilik mevcut
-        WordPress sayfalarında açılır; dizin burada temiz ve kırılmayan bağlantılarla sunulur.
+    <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+      <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[color:var(--ember)]">
+        Yazılar
       </p>
-      <div className="brand-rule mt-6 w-36" />
+      <h1 className="mt-4 font-display text-5xl tracking-tight md:text-6xl">Makaleler</h1>
+      <p className="mt-5 max-w-2xl text-base leading-8 text-[color:var(--ink-soft)]">
+        Dizinde {articles.length} yazı var. Tam metinler şimdilik WordPress sayfalarında açılır.
+      </p>
+      <div className="ember-rule mt-6" />
 
       <ol className="mt-12 divide-y divide-[color:var(--line)] border-y border-[color:var(--line)]">
         {articles.map((article, index) => (
@@ -24,12 +25,12 @@ export default function MakalelerPage() {
               href={article.href}
               target="_blank"
               rel="noreferrer"
-              className="group flex items-baseline gap-4 py-4 transition hover:bg-[color:var(--paper-band)]"
+              className="group flex items-baseline gap-5 py-5 transition hover:bg-white/60"
             >
-              <span className="w-10 shrink-0 text-xs font-bold tabular-nums text-[color:var(--brand)]">
+              <span className="w-8 shrink-0 text-xs tabular-nums text-[color:var(--ember)]">
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <span className="font-display text-lg leading-snug text-[color:var(--ink)] group-hover:text-[color:var(--brand)] md:text-xl">
+              <span className="font-display text-xl leading-snug tracking-tight group-hover:text-[color:var(--ember)] md:text-2xl">
                 {article.title}
               </span>
             </a>

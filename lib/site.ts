@@ -42,10 +42,10 @@ export const site = {
 
 export const navItems = [
   { label: "Hakkında", href: "/hakkinda" },
-  { label: "Fotoğraf Galerisi", href: "/fotograf" },
-  { label: "Makaleleri", href: "/makaleler" },
-  { label: "Dergi Arşivleri", href: "/arsivler" },
-  { label: "Online Kitapları", href: "/kitaplar" },
+  { label: "Fotoğraflar", href: "/fotograf" },
+  { label: "Makaleler", href: "/makaleler" },
+  { label: "Arşivler", href: "/arsivler" },
+  { label: "Kitaplar", href: "/kitaplar" },
   { label: "Bizimle paylaş", href: "/bizimle-paylas" },
 ];
 

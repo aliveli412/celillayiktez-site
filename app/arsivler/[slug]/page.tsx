@@ -22,44 +22,48 @@ export default async function ArchiveDetailPage({ params }: Props) {
   if (!archive) notFound();
 
   return (
-    <div className="mx-auto max-w-7xl px-6 py-16 md:py-20">
-      <Link href="/arsivler" className="text-xs font-bold uppercase tracking-[0.18em] text-[color:var(--brand)]">
+    <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+      <Link
+        href="/arsivler"
+        className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--ember)]"
+      >
         ← Dergi Arşivleri
       </Link>
-      <h1 className="mt-4 font-display text-4xl tracking-tight md:text-5xl">{archive.title}</h1>
+      <h1 className="mt-5 font-display text-4xl tracking-tight md:text-6xl">{archive.title}</h1>
       {archive.years ? (
-        <p className="mt-3 text-sm font-semibold tracking-wide text-[color:var(--ink-soft)]">{archive.years}</p>
+        <p className="mt-3 text-sm tracking-[0.08em] text-[color:var(--ink-soft)]">{archive.years}</p>
       ) : null}
       <p className="mt-5 max-w-3xl text-base leading-8 text-[color:var(--ink-soft)]">{archive.intro}</p>
       <p className="mt-3 text-sm text-[color:var(--ink-soft)]">
-        Kaynak dizin:{" "}
-        <a href={archive.wpIndex} target="_blank" rel="noreferrer" className="text-[color:var(--brand)] underline-offset-2 hover:underline">
+        WP kaynak:{" "}
+        <a
+          href={archive.wpIndex}
+          target="_blank"
+          rel="noreferrer"
+          className="text-[color:var(--ember)] underline-offset-2 hover:underline"
+        >
           {archive.wpIndex.replace("https://", "")}
         </a>
       </p>
-      <div className="brand-rule mt-6 w-36" />
+      <div className="ember-rule mt-6" />
 
       {archive.issues.length === 0 ? (
-        <div className="mt-10 border border-[color:var(--line)] bg-[color:var(--paper-band)] p-8 text-sm leading-7 text-[color:var(--ink-soft)]">
-          Bu bölümdeki belgeler WordPress yüklemelerinde tutulur. Erişim veya araştırma talepleri için{" "}
-          <a href="mailto:info@celillayiktez.com" className="font-semibold text-[color:var(--brand)]">
+        <div className="mt-10 border border-[color:var(--line)] bg-[color:var(--surface)] p-8 text-sm leading-7 text-[color:var(--ink-soft)]">
+          Belgeler WordPress yüklemelerinde. Talep için{" "}
+          <a href="mailto:info@celillayiktez.com" className="font-semibold text-[color:var(--ember)]">
             info@celillayiktez.com
-          </a>{" "}
-          adresine yazabilirsiniz. Tam liste için{" "}
-          <a href={archive.wpIndex} target="_blank" rel="noreferrer" className="font-semibold text-[color:var(--brand)]">
-            mevcut arşiv sayfasını
-          </a>{" "}
-          ziyaret edin.
+          </a>
+          .
         </div>
       ) : (
-        <ul className="mt-10 columns-1 gap-x-10 sm:columns-2 lg:columns-3">
+        <ul className="mt-10 columns-1 gap-x-12 sm:columns-2 lg:columns-3">
           {archive.issues.map((issue) => (
             <li key={issue.href} className="mb-3 break-inside-avoid">
               <a
                 href={issue.href}
                 target="_blank"
                 rel="noreferrer"
-                className="text-sm leading-6 text-[color:var(--ink)] underline-offset-2 hover:text-[color:var(--brand)] hover:underline"
+                className="text-sm leading-6 text-[color:var(--ink)] underline-offset-2 hover:text-[color:var(--ember)] hover:underline"
               >
                 {issue.title}
               </a>
