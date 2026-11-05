@@ -12,12 +12,27 @@ export default function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-[color:var(--line)] bg-[color:var(--surface)]/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 md:px-8">
-        <Link href="/" className="group flex flex-col" onClick={() => setOpen(false)}>
-          <span className="font-display text-2xl leading-none tracking-tight text-[color:var(--ink)] transition group-hover:text-[color:var(--ember)] md:text-[1.7rem]">
-            {site.name}
-          </span>
-          <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.28em] text-[color:var(--ink-soft)]">
-            {site.tagline}
+        <Link
+          href="/"
+          className="group flex items-center gap-3"
+          onClick={() => setOpen(false)}
+          aria-label={site.name}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={site.logoSrc}
+            alt={site.name}
+            width={150}
+            height={71}
+            className="h-9 w-auto transition group-hover:opacity-85 md:h-10"
+          />
+          <span className="hidden flex-col sm:flex">
+            <span className="font-display text-lg leading-none tracking-tight text-[color:var(--ink)] transition group-hover:text-[color:var(--ember)] md:text-xl">
+              {site.name}
+            </span>
+            <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.28em] text-[color:var(--ink-soft)]">
+              {site.tagline}
+            </span>
           </span>
         </Link>
 

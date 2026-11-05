@@ -10,7 +10,8 @@ export const site = {
   tagline: "Araştırma · Arşiv · Anı",
   email: "info@celillayiktez.com",
   url: "https://www.celillayiktez.com",
-  logoSrc: "/brand/Celil-Layiktez-Logox300x142.png",
+  logoSrc:
+    "https://www.celillayiktez.com/wp-content/uploads/2020/10/Celil-Layiktez-Logox300x142.png",
   logoDarkSrc: "/brand/logo-dark-2x.png",
   logoMarkSrc: "/brand/logo-dark.png",
   portraitSrc: "/brand/Celil_Layiktez_MK.png",

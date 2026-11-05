@@ -34,12 +34,14 @@ export default function SiteFooter() {
       <div className="border-t border-[color:var(--line)]">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-8 md:flex-row md:items-center md:justify-between md:px-8">
           <div className="flex items-center gap-3">
-            <div
-              aria-hidden
-              className="flex h-10 w-10 shrink-0 items-center justify-center border border-[color:var(--ember)] font-display text-sm font-semibold tracking-wide text-[color:var(--ember)]"
-            >
-              CL
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={site.logoSrc}
+              alt=""
+              width={120}
+              height={57}
+              className="h-8 w-auto shrink-0 opacity-90"
+            />
             <div>
               <div className="text-sm font-semibold text-[color:var(--ink)]">
                 Pek. Muh. Celil Layiktez K∴ — Dijital Arşiv
