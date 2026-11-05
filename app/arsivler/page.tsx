@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { archives } from "@/lib/site";
-import { uploadsProxyPath } from "@/lib/wp-fetch";
 
 export const metadata: Metadata = {
   title: "Dergi Arşivleri",
@@ -51,7 +50,7 @@ export default function ArsivlerPage() {
                 {preview.length > 0 ? (
                   <div className="flex -space-x-3 self-start md:self-center">
                     {preview.map((issue) => {
-                      const src = uploadsProxyPath(issue.coverThumb || issue.cover) || issue.coverThumb;
+                      const src = issue.coverThumb || issue.cover;
                       return (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img

@@ -38,8 +38,9 @@ export default function MagazineReader({ title, pdfUrl, downloadUrl }: Props) {
         setLoading(true);
         setError(null);
         const pdfjs = await import("pdfjs-dist");
-        // CDN worker avoids Next/Turbopack bundling issues with the .mjs worker file
-        pdfjs.GlobalWorkerOptions.workerSrc = '/pdfjs/pdf.worker.min.mjs';
+        // Hostinger serves /pdfjs/*.mjs as text/plain (breaks module workers).
+        // Use CDN so MIME is correct; version must match pdfjs-dist.
+        pdfjs.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
         const loadingTask = pdfjs.getDocument({
           url: pdfUrl,
           withCredentials: false,

@@ -25,7 +25,7 @@ export default function KitaplarPage() {
             <a href={book.href} target="_blank" rel="noreferrer" className="block overflow-hidden bg-[color:var(--ink)]/5">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={book.cover}
+                src={book.coverWp || book.cover}
                 alt={book.title}
                 className="aspect-[3/4] w-full object-cover transition duration-700 group-hover:scale-[1.03]"
               />

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { archives, getArchive } from "@/lib/site";
-import { uploadsProxyPath } from "@/lib/wp-fetch";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -55,7 +54,8 @@ export default async function ArchiveDetailPage({ params }: Props) {
       ) : (
         <div className="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {archive.issues.map((issue) => {
-            const cover = uploadsProxyPath(issue.coverThumb || issue.cover) || issue.coverThumb;
+            // Direct WP URL — avoids Hostinger rate-limits on /api/wp-media for many images
+            const cover = issue.coverThumb || issue.cover;
             return (
               <Link
                 key={issue.slug}

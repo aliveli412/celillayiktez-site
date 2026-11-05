@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import MagazineReader from "@/components/MagazineReader";
 import { findIssue, getArchiveOrThrow, resolveIssueMedia } from "@/lib/magazines";
 import { archives } from "@/lib/site";
-import { uploadsProxyPath } from "@/lib/wp-fetch";
 
 export const dynamic = "force-dynamic";
 
@@ -41,7 +40,7 @@ export default async function IssueReaderPage({ params }: Props) {
   if (!issue) notFound();
 
   const media = await resolveIssueMedia(issue);
-  const cover = uploadsProxyPath(issue.cover) || issue.cover;
+  const cover = issue.cover;
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 md:px-8 md:py-14">

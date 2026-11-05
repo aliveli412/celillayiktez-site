@@ -5,12 +5,12 @@ const WP_HOST = "www.celillayiktez.com";
 const ALLOWED_PREFIX = "/wp-content/uploads/";
 
 /**
- * Streams WordPress upload assets (covers, etc.) through this app so browsers
- * are not blocked by the origin's TLS quirks. Binaries are not stored in-repo;
- * dergi/kitap files remain on WP uploads.
+ * Streams WordPress upload assets (especially PDFs) through this app.
+ * Images should prefer direct WP URLs in the browser to avoid Hostinger
+ * rate-limits on this API; PDFs stay proxied for CORS/pdf.js.
  */
 export async function GET(
-  _request: NextRequest,
+  request: NextRequest,
   context: { params: Promise<{ path: string[] }> },
 ) {
   const { path } = await context.params;
@@ -22,56 +22,74 @@ export async function GET(
   }
 
   const url = `https://${WP_HOST}${wpPath}`;
+  const range = request.headers.get("range") || undefined;
 
   try {
-    const { statusCode, headers, body } = await fetchWp(url);
-    if (statusCode && statusCode >= 400) {
-      return new NextResponse("Upstream error", { status: statusCode });
+    const upstream = await fetchWpStream(url, range);
+    if (upstream.statusCode && upstream.statusCode >= 400) {
+      return new NextResponse("Upstream error", { status: upstream.statusCode });
     }
 
-    const contentType = headers["content-type"] || "application/octet-stream";
-    const contentLength = headers["content-length"];
+    const contentType = headerValue(upstream.headers["content-type"]) || "application/octet-stream";
+    const headers = new Headers({
+      "Content-Type": contentType,
+      "Cache-Control": "public, max-age=86400, stale-while-revalidate=604800",
+      "Accept-Ranges": "bytes",
+    });
+    const length = headerValue(upstream.headers["content-length"]);
+    if (length) headers.set("Content-Length", length);
+    const contentRange = headerValue(upstream.headers["content-range"]);
+    if (contentRange) headers.set("Content-Range", contentRange);
 
-    return new NextResponse(new Uint8Array(body), {
-      status: 200,
-      headers: {
-        "Content-Type": Array.isArray(contentType) ? contentType[0] : contentType,
-        ...(contentLength
-          ? {
-              "Content-Length": Array.isArray(contentLength)
-                ? contentLength[0]
-                : contentLength,
-            }
-          : {}),
-        "Cache-Control": "public, max-age=86400, stale-while-revalidate=604800",
-      },
+    return new NextResponse(upstream.stream, {
+      status: upstream.statusCode || 200,
+      headers,
     });
   } catch {
     return new NextResponse("Media unavailable", { status: 502 });
   }
 }
 
-function fetchWp(url: string): Promise<{
+function headerValue(value: string | string[] | undefined): string | undefined {
+  if (!value) return undefined;
+  return Array.isArray(value) ? value[0] : value;
+}
+
+function fetchWpStream(
+  url: string,
+  range?: string,
+): Promise<{
   statusCode?: number;
   headers: NodeJS.Dict<string | string[]>;
-  body: Buffer;
+  stream: ReadableStream<Uint8Array>;
 }> {
   return new Promise((resolve, reject) => {
     const req = https.get(
       url,
       {
         rejectUnauthorized: false,
-        headers: { "User-Agent": "CelilLayiktezSite/1.0" },
+        headers: {
+          "User-Agent": "CelilLayiktezSite/1.0",
+          ...(range ? { Range: range } : {}),
+        },
       },
       (res) => {
-        const chunks: Buffer[] = [];
-        res.on("data", (chunk) => chunks.push(chunk));
-        res.on("end", () => {
-          resolve({
-            statusCode: res.statusCode,
-            headers: res.headers,
-            body: Buffer.concat(chunks),
-          });
+        const stream = new ReadableStream<Uint8Array>({
+          start(controller) {
+            res.on("data", (chunk: Buffer) => {
+              controller.enqueue(new Uint8Array(chunk));
+            });
+            res.on("end", () => controller.close());
+            res.on("error", (err) => controller.error(err));
+          },
+          cancel() {
+            res.destroy();
+          },
+        });
+        resolve({
+          statusCode: res.statusCode,
+          headers: res.headers,
+          stream,
         });
       },
     );
