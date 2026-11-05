@@ -19,15 +19,37 @@ export type ResolvedIssueMedia = {
   wpHref: string;
 };
 
+async function pdfUrlFromIpagesConfig(itemId: string): Promise<string | null> {
+  const configUrl = `https://www.celillayiktez.com/wp-content/uploads/ipages_flipbook/${itemId}/config.json`;
+  const raw = await fetchWpText(configUrl);
+  const data = JSON.parse(raw) as { pdfUrl?: string };
+  return data.pdfUrl || null;
+}
+
 export async function resolveIssueMedia(issue: ArchiveIssue): Promise<ResolvedIssueMedia> {
   let pdfUrl: string | null = null;
   try {
     const html = await fetchWpText(issue.href);
+    const itemId = html.match(/data-item-id="(\d+)"/i)?.[1];
     const jsonSrc = html.match(/data-json-src="([^"]+)"/i)?.[1];
-    if (jsonSrc) {
-      const raw = await fetchWpText(jsonSrc);
-      const data = JSON.parse(raw) as { pdfUrl?: string; title?: string };
-      if (data.pdfUrl) pdfUrl = data.pdfUrl;
+
+    // Prefer on-disk iPages config — REST /item/{id} often 404s on this host.
+    if (itemId) {
+      try {
+        pdfUrl = await pdfUrlFromIpagesConfig(itemId);
+      } catch {
+        pdfUrl = null;
+      }
+    }
+
+    if (!pdfUrl && jsonSrc) {
+      try {
+        const raw = await fetchWpText(jsonSrc);
+        const data = JSON.parse(raw) as { pdfUrl?: string };
+        if (data.pdfUrl) pdfUrl = data.pdfUrl;
+      } catch {
+        /* keep null */
+      }
     }
   } catch {
     pdfUrl = null;
