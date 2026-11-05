@@ -59,7 +59,11 @@ export async function resolveIpagesPdfFromPage(href: string): Promise<string | n
 }
 
 export async function resolveIssueMedia(issue: ArchiveIssue): Promise<ResolvedIssueMedia> {
-  const pdfUrl = await resolveIpagesPdfFromPage(issue.href);
+  // Prefer baked-in PDF URLs — live WP HTML pages may be gone after cutover.
+  let pdfUrl: string | null = issue.pdf || null;
+  if (!pdfUrl) {
+    pdfUrl = await resolveIpagesPdfFromPage(issue.href);
+  }
 
   return {
     title: issue.title,
