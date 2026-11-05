@@ -14,7 +14,7 @@ export default function SiteHeader() {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 md:px-8">
         <Link
           href="/"
-          className="group flex items-center gap-3"
+          className="group inline-flex items-center"
           onClick={() => setOpen(false)}
           aria-label={site.name}
         >
@@ -26,14 +26,6 @@ export default function SiteHeader() {
             height={71}
             className="h-9 w-auto transition group-hover:opacity-85 md:h-10"
           />
-          <span className="hidden flex-col sm:flex">
-            <span className="font-display text-lg leading-none tracking-tight text-[color:var(--ink)] transition group-hover:text-[color:var(--ember)] md:text-xl">
-              {site.name}
-            </span>
-            <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.28em] text-[color:var(--ink-soft)]">
-              {site.tagline}
-            </span>
-          </span>
         </Link>
 
         <nav className="hidden items-center gap-6 text-[13px] font-medium text-[color:var(--ink-soft)] lg:flex">
