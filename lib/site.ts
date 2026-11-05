@@ -67,6 +67,8 @@ export type ArchiveIssue = {
   href: string;
   cover: string;
   coverThumb: string;
+  /** Absolute WordPress uploads PDF URL when known */
+  pdf?: string;
 };
 export type Archive = {
   slug: string;
