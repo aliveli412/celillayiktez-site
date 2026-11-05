@@ -1,5 +1,5 @@
 import { archives, type Archive, type ArchiveIssue } from "@/lib/site";
-import { fetchWpText, uploadsProxyPath } from "@/lib/wp-fetch";
+import { fetchWpText, uploadsProxyPath, uploadsPublicPath } from "@/lib/wp-fetch";
 
 export function getArchiveOrThrow(slug: string): Archive {
   const archive = archives.find((a) => a.slug === slug);
@@ -65,10 +65,16 @@ export async function resolveIssueMedia(issue: ArchiveIssue): Promise<ResolvedIs
     pdfUrl = await resolveIpagesPdfFromPage(issue.href);
   }
 
+  // Prefer same-origin /wp-content/uploads path (static on Hostinger public_html).
+  // Fall back to /api/wp-media which can also read local disk.
+  const pdfProxyUrl = pdfUrl
+    ? uploadsPublicPath(pdfUrl) || uploadsProxyPath(pdfUrl)
+    : null;
+
   return {
     title: issue.title,
     pdfUrl,
-    pdfProxyUrl: pdfUrl ? uploadsProxyPath(pdfUrl) : null,
+    pdfProxyUrl,
     coverProxyUrl: uploadsProxyPath(issue.coverThumb || issue.cover),
     wpHref: issue.href,
   };

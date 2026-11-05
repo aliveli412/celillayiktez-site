@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ArchiveDownloadAll from "@/components/ArchiveDownloadAll";
 import { archives, getArchive } from "@/lib/site";
-import { uploadsProxyPath } from "@/lib/wp-fetch";
+import { uploadsProxyPath, uploadsPublicPath } from "@/lib/wp-fetch";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -26,7 +26,9 @@ export default async function ArchiveDetailPage({ params }: Props) {
   const preview = archive.issues.slice(0, 5);
   const downloadable = archive.issues
     .map((issue) => {
-      const proxy = issue.pdf ? uploadsProxyPath(issue.pdf) : null;
+      const proxy = issue.pdf
+        ? uploadsPublicPath(issue.pdf) || uploadsProxyPath(issue.pdf)
+        : null;
       if (!proxy) return null;
       return { slug: issue.slug, title: issue.title, pdfProxyUrl: proxy };
     })

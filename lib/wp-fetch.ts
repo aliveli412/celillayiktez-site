@@ -29,6 +29,15 @@ export function fetchWpText(url: string): Promise<string> {
   });
 }
 
+/** Same-origin public path — preferred for browser PDF/cover loads. */
+export function uploadsPublicPath(absoluteUrl: string): string | null {
+  const marker = "/wp-content/uploads/";
+  const idx = absoluteUrl.indexOf(marker);
+  if (idx < 0) return null;
+  return absoluteUrl.slice(idx);
+}
+
+/** App Router media proxy path (falls back to disk/HTTP in the API route). */
 export function uploadsProxyPath(absoluteUrl: string): string | null {
   const marker = "/wp-content/uploads/";
   const idx = absoluteUrl.indexOf(marker);

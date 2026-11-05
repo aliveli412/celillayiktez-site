@@ -1,5 +1,9 @@
+import articleBodiesJson from "@/lib/content/article-bodies.json";
 import { articles, type Article } from "@/lib/site";
 import { fetchWpText } from "@/lib/wp-fetch";
+
+type StoredBody = { title: string; href: string; source: string; html: string };
+const articleBodies = articleBodiesJson as Record<string, StoredBody>;
 
 export function articleSlugFromHref(href: string): string {
   try {
@@ -67,6 +71,11 @@ export function extractArticleBody(html: string): string | null {
 }
 
 export async function fetchArticleHtml(article: Article): Promise<string | null> {
+  const slug = articleSlugFromHref(article.href);
+  const embedded = articleBodies[slug]?.html;
+  if (embedded) return embedded;
+
+  // Optional live fallback if WP HTML pages ever return.
   try {
     const html = await fetchWpText(article.href);
     return extractArticleBody(html);

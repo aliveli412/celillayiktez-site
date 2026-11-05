@@ -1,6 +1,6 @@
 import { books, type Book } from "@/lib/site";
 import { resolveIpagesPdfFromPage } from "@/lib/magazines";
-import { uploadsProxyPath } from "@/lib/wp-fetch";
+import { uploadsProxyPath, uploadsPublicPath } from "@/lib/wp-fetch";
 
 export function bookSlugFromHref(href: string): string {
   try {
@@ -30,6 +30,6 @@ export async function resolveBookMedia(book: Book): Promise<ResolvedBookMedia> {
 
   return {
     pdfUrl,
-    pdfProxyUrl: pdfUrl ? uploadsProxyPath(pdfUrl) : null,
+    pdfProxyUrl: pdfUrl ? uploadsPublicPath(pdfUrl) || uploadsProxyPath(pdfUrl) : null,
   };
 }
