@@ -26,34 +26,40 @@ async function pdfUrlFromIpagesConfig(itemId: string): Promise<string | null> {
   return data.pdfUrl || null;
 }
 
-export async function resolveIssueMedia(issue: ArchiveIssue): Promise<ResolvedIssueMedia> {
-  let pdfUrl: string | null = null;
+/** Resolve a PDF URL from a WordPress page that embeds iPages FlipBook. */
+export async function resolveIpagesPdfFromPage(href: string): Promise<string | null> {
   try {
-    const html = await fetchWpText(issue.href);
+    const html = await fetchWpText(href);
     const itemId = html.match(/data-item-id="(\d+)"/i)?.[1];
     const jsonSrc = html.match(/data-json-src="([^"]+)"/i)?.[1];
 
-    // Prefer on-disk iPages config — REST /item/{id} often 404s on this host.
+    // Prefer on-disk iPages config — REST /item/{id} is flaky on this host.
     if (itemId) {
       try {
-        pdfUrl = await pdfUrlFromIpagesConfig(itemId);
+        const pdfUrl = await pdfUrlFromIpagesConfig(itemId);
+        if (pdfUrl) return pdfUrl;
       } catch {
-        pdfUrl = null;
+        /* try REST next */
       }
     }
 
-    if (!pdfUrl && jsonSrc) {
+    if (jsonSrc) {
       try {
         const raw = await fetchWpText(jsonSrc);
         const data = JSON.parse(raw) as { pdfUrl?: string };
-        if (data.pdfUrl) pdfUrl = data.pdfUrl;
+        if (data.pdfUrl) return data.pdfUrl;
       } catch {
         /* keep null */
       }
     }
   } catch {
-    pdfUrl = null;
+    return null;
   }
+  return null;
+}
+
+export async function resolveIssueMedia(issue: ArchiveIssue): Promise<ResolvedIssueMedia> {
+  const pdfUrl = await resolveIpagesPdfFromPage(issue.href);
 
   return {
     title: issue.title,
