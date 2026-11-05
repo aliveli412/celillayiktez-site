@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { archives, getArchive } from "@/lib/site";
+import { uploadsProxyPath } from "@/lib/wp-fetch";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -35,15 +36,7 @@ export default async function ArchiveDetailPage({ params }: Props) {
       ) : null}
       <p className="mt-5 max-w-3xl text-base leading-8 text-[color:var(--ink-soft)]">{archive.intro}</p>
       <p className="mt-3 text-sm text-[color:var(--ink-soft)]">
-        WP kaynak:{" "}
-        <a
-          href={archive.wpIndex}
-          target="_blank"
-          rel="noreferrer"
-          className="text-[color:var(--ember)] underline-offset-2 hover:underline"
-        >
-          {archive.wpIndex.replace("https://", "")}
-        </a>
+        Kapak ve PDF dosyaları WordPress yüklemelerinde kalır.
       </p>
       <div className="ember-rule mt-6" />
 
@@ -53,23 +46,38 @@ export default async function ArchiveDetailPage({ params }: Props) {
           <a href="mailto:info@celillayiktez.com" className="font-semibold text-[color:var(--ember)]">
             info@celillayiktez.com
           </a>
+          . Kaynak:{" "}
+          <a href={archive.wpIndex} target="_blank" rel="noreferrer" className="font-semibold text-[color:var(--ember)]">
+            eski arşiv sayfası
+          </a>
           .
         </div>
       ) : (
-        <ul className="mt-10 columns-1 gap-x-12 sm:columns-2 lg:columns-3">
-          {archive.issues.map((issue) => (
-            <li key={issue.href} className="mb-3 break-inside-avoid">
-              <a
-                href={issue.href}
-                target="_blank"
-                rel="noreferrer"
-                className="text-sm leading-6 text-[color:var(--ink)] underline-offset-2 hover:text-[color:var(--ember)] hover:underline"
+        <div className="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+          {archive.issues.map((issue) => {
+            const cover = uploadsProxyPath(issue.coverThumb || issue.cover) || issue.coverThumb;
+            return (
+              <Link
+                key={issue.slug}
+                href={`/arsivler/${archive.slug}/${issue.slug}`}
+                className="group"
               >
-                {issue.title}
-              </a>
-            </li>
-          ))}
-        </ul>
+                <div className="overflow-hidden rounded-lg border border-[color:var(--line)] bg-white shadow-[0_8px_24px_rgba(16,20,26,0.05)]">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={cover}
+                    alt={issue.title}
+                    className="aspect-[2/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                    loading="lazy"
+                  />
+                </div>
+                <h2 className="mt-3 font-display text-base leading-snug tracking-tight group-hover:text-[color:var(--ember)] md:text-lg">
+                  {issue.title}
+                </h2>
+              </Link>
+            );
+          })}
+        </div>
       )}
     </div>
   );

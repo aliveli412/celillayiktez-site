@@ -60,7 +60,13 @@ export type Book = {
   pdf?: string;
 };
 export type Article = { title: string; href: string; listPage: number };
-export type ArchiveIssue = { title: string; href: string };
+export type ArchiveIssue = {
+  slug: string;
+  title: string;
+  href: string;
+  cover: string;
+  coverThumb: string;
+};
 export type Archive = {
   slug: string;
   title: string;
