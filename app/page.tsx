@@ -43,7 +43,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-12 md:px-8 md:py-16">
+      <section className="mx-auto max-w-6xl px-5 py-6 md:px-8 md:py-8">
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[color:var(--ember)]">
@@ -58,7 +58,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-y border-[color:var(--line)] bg-[color:var(--surface)]/70 py-12 md:py-16">
+      <section className="border-y border-[color:var(--line)] bg-[color:var(--surface)]/70 py-6 md:py-8">
         <div className="mx-auto max-w-6xl px-5 md:px-8">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
