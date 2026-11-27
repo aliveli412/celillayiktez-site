@@ -5,7 +5,7 @@ export default function SiteFooter() {
   return (
     <footer className="mt-auto bg-[color:var(--surface)]">
       {/* Closing quote band */}
-      <div className="mx-auto max-w-3xl px-5 pb-16 pt-20 text-center md:px-8 md:pb-20 md:pt-24">
+      <div className="mx-auto max-w-5xl px-5 pb-16 pt-20 text-center md:px-8 md:pb-20 md:pt-24">
         <div
           aria-hidden
           className="font-display text-5xl leading-none text-[color:var(--ember)] md:text-6xl"
@@ -18,7 +18,7 @@ export default function SiteFooter() {
         <p className="mt-4 text-[11px] font-medium uppercase tracking-[0.28em] text-[color:var(--ink-soft)]">
           Nihil est immortalis, vivit in omnia
         </p>
-        <p className="mx-auto mt-6 max-w-xl text-sm leading-7 text-[color:var(--ink-soft)]">
+        <p className="mx-auto mt-6 max-w-xl text-sm lg:max-w-none lg:whitespace-nowrap leading-7 text-[color:var(--ink-soft)]">
           Eserleri bugün Celil Layiktez Müzesi ve Araştırma Kütüphanesi’nde (CLMAK) muhafaza
           ediliyor; bu dijital arşiv aynı mirasın herkese açık yüzüdür.
         </p>
