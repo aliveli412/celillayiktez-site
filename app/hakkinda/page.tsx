@@ -21,7 +21,7 @@ export default function HakkindaPage() {
       </aside>
       <article className="max-w-3xl">
         <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[color:var(--ember)]">
-          Yaşamöyküsü
+          Yaşam Öyküsü
         </p>
         <h1 className="mt-4 font-display text-4xl tracking-tight md:text-6xl">
           Pek Muh. Celil Layiktez

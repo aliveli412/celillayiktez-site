@@ -19,15 +19,19 @@ export default function HomePage() {
           <h1 className="anim-rise-2 mt-4 max-w-4xl font-display text-5xl leading-[0.95] tracking-tight md:text-7xl lg:text-8xl">
             Celil Layiktez
           </h1>
-          <p className="anim-rise-3 mt-6 max-w-xl text-base leading-8 text-white/80 md:text-lg">
-            {site.homeLead}
+          <p className="anim-rise-3 mt-6 max-w-3xl text-base leading-8 text-white/80 md:text-lg">
+            {site.homeLead.map((sentence) => (
+              <span key={sentence} className="block text-balance">
+                {sentence}
+              </span>
+            ))}
           </p>
           <div className="anim-rise-3 mt-9 flex flex-wrap gap-3">
             <Link
               href="/hakkinda"
               className="bg-[color:var(--ember)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[color:var(--ember-deep)]"
             >
-              Yaşamöyküsü
+              Yaşam Öyküsü
             </Link>
             <Link
               href="/kitaplar"

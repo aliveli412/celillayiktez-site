@@ -126,7 +126,7 @@ export default function KronolojiPage() {
           href="/hakkinda"
           className="inline-flex text-sm font-semibold text-[color:var(--ember)] hover:text-[color:var(--ember-deep)]"
         >
-          Tam yaşamöyküsü →
+          Tam yaşam öyküsü →
         </Link>
       </div>
     </div>
