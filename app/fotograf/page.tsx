@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function FotografPage() {
   return (
-    <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+    <div className="mx-auto max-w-6xl px-5 py-10 md:px-8 md:py-14">
       <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[color:var(--ember)]">
         Galeri
       </p>
@@ -22,7 +22,7 @@ export default function FotografPage() {
       </p>
       <div className="ember-rule mt-6" />
 
-      <div className="mt-12 grid gap-6 md:grid-cols-2">
+      <div className="mt-8 grid gap-6 md:grid-cols-2">
         {site.gallery.map((photo) => (
           <figure key={photo.src} className="overflow-hidden border border-[color:var(--line)] bg-[color:var(--surface)]">
             <img src={photo.src} alt={photo.alt} className="aspect-[4/5] w-full object-cover object-top" />

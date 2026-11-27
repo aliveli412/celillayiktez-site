@@ -10,8 +10,7 @@ export const site = {
   tagline: "Araştırma · Arşiv · Anı",
   email: "info@celillayiktez.com",
   url: "https://www.celillayiktez.com",
-  logoSrc:
-    "https://www.celillayiktez.com/wp-content/uploads/2020/10/Celil-Layiktez-Logox300x142.png",
+  logoSrc: "/brand/Celil-Layiktez-Logox300x142.png",
   logoDarkSrc: "/brand/logo-dark-2x.png",
   logoMarkSrc: "/brand/logo-dark.png",
   portraitSrc: "/brand/Celil_Layiktez_MK.png",
@@ -34,8 +33,10 @@ export const site = {
   ],
   homeIntro:
     "1964 yılında 11 No.lu Müsavat Locasında tekris olmuş, 1972’de Locanın Üstad-ı Muhteremlik görevine seçilmiş, 1991’de Büyük Görevliler Kuruluna girmiş ve 1998 yılında Önceki Büyük Üstat Yardımcısı olarak Büyük Kurul kariyerini noktalamıştır. 1967’de kabul edildiği Mimar Sinan araştırma locasının dergisinde 43 makalesi yayınlanmıştır. 1991’den beri de Tesviye Dergisini çıkartmıştır.",
-  homeLead:
-    "Türkiye’de Masonluk Tarihi denilince tereddütsüz akla ilk gelen isimlerden biri. Araştırmaları, makaleleri ve kitapları bu sitede yaşatılır.",
+  homeLead: [
+    "Türkiye’de Masonluk Tarihi denilince tereddütsüz akla ilk gelen isimlerden biri.",
+    "Araştırmaları, makaleleri ve kitapları bu sitede yaşatılır.",
+  ],
   dates: "16 Mart 1935 — 29 Haziran 2020",
   facebook: "https://www.facebook.com/celil.layiktez",
   twitter: "https://twitter.com/celillayiktez",

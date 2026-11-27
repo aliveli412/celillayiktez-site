@@ -5,7 +5,7 @@ export default function SiteFooter() {
   return (
     <footer className="mt-auto bg-[color:var(--surface)]">
       {/* Closing quote band */}
-      <div className="mx-auto max-w-5xl px-5 pb-16 pt-20 text-center md:px-8 md:pb-20 md:pt-24">
+      <div className="mx-auto max-w-5xl px-5 pb-12 pt-14 text-center md:px-8 md:pb-14 md:pt-16">
         <div
           aria-hidden
           className="font-display text-5xl leading-none text-[color:var(--ember)] md:text-6xl"

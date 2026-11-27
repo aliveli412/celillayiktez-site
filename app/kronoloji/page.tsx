@@ -68,7 +68,7 @@ function nodeClass(icon: ChronologyItem["icon"]) {
 
 export default function KronolojiPage() {
   return (
-    <div className="mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-24">
+    <div className="mx-auto max-w-3xl px-5 py-10 md:px-8 md:py-14">
       <div className="text-center">
         <div className="inline-flex items-center gap-3">
           <span className="h-px w-8 bg-[color:var(--ember)]" />
@@ -83,7 +83,7 @@ export default function KronolojiPage() {
         </p>
       </div>
 
-      <ol className="relative mt-14 space-y-6 pl-2 md:pl-4">
+      <ol className="relative mt-10 space-y-6 pl-2 md:pl-4">
         <span
           aria-hidden
           className="absolute bottom-3 left-[1.35rem] top-3 w-px bg-[color:var(--line)] md:left-[1.6rem]"
@@ -121,12 +121,12 @@ export default function KronolojiPage() {
         ))}
       </ol>
 
-      <div className="mt-12 text-center">
+      <div className="mt-8 text-center">
         <Link
           href="/hakkinda"
           className="inline-flex text-sm font-semibold text-[color:var(--ember)] hover:text-[color:var(--ember-deep)]"
         >
-          Tam yaşamöyküsü →
+          Tam yaşam öyküsü →
         </Link>
       </div>
     </div>

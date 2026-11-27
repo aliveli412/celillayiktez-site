@@ -19,15 +19,19 @@ export default function HomePage() {
           <h1 className="anim-rise-2 mt-4 max-w-4xl font-display text-5xl leading-[0.95] tracking-tight md:text-7xl lg:text-8xl">
             Celil Layiktez
           </h1>
-          <p className="anim-rise-3 mt-6 max-w-xl text-base leading-8 text-white/80 md:text-lg">
-            {site.homeLead}
+          <p className="anim-rise-3 mt-6 max-w-3xl text-base leading-8 text-white/80 md:text-lg">
+            {site.homeLead.map((sentence) => (
+              <span key={sentence} className="block text-balance">
+                {sentence}
+              </span>
+            ))}
           </p>
           <div className="anim-rise-3 mt-9 flex flex-wrap gap-3">
             <Link
               href="/hakkinda"
               className="bg-[color:var(--ember)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[color:var(--ember-deep)]"
             >
-              Yaşamöyküsü
+              Yaşam Öyküsü
             </Link>
             <Link
               href="/kitaplar"
@@ -39,8 +43,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
-        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+      <section className="mx-auto max-w-6xl px-5 py-12 md:px-8 md:py-16">
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[color:var(--ember)]">
               Kısa hatırlatma
@@ -54,7 +58,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-y border-[color:var(--line)] bg-[color:var(--surface)]/70 py-20 md:py-24">
+      <section className="border-y border-[color:var(--line)] bg-[color:var(--surface)]/70 py-12 md:py-16">
         <div className="mx-auto max-w-6xl px-5 md:px-8">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
@@ -69,7 +73,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-px bg-[color:var(--line)] md:grid-cols-3">
+          <div className="mt-8 grid gap-px bg-[color:var(--line)] md:grid-cols-3">
             {[
               {
                 title: "Online Kitaplar",
@@ -105,7 +109,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-24">
+      <section className="mx-auto max-w-6xl px-5 py-12 md:px-8 md:py-16">
         <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[color:var(--ember)]">
           Dergi arşivi
         </p>

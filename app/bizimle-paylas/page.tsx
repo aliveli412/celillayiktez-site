@@ -10,7 +10,7 @@ export default function BizimlePaylasPage() {
   const mailto = `mailto:${site.email}?subject=${encodeURIComponent("Celil Layiktez arşiv katkısı")}`;
 
   return (
-    <div className="mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-24">
+    <div className="mx-auto max-w-3xl px-5 py-10 md:px-8 md:py-14">
       <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[color:var(--ember)]">
         Katkı
       </p>
