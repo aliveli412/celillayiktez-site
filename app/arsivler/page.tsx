@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ArsivlerPage() {
   return (
-    <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+    <div className="mx-auto max-w-6xl px-5 py-10 md:px-8 md:py-14">
       <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[color:var(--ember)]">
         Arşiv
       </p>
@@ -20,7 +20,7 @@ export default function ArsivlerPage() {
       </p>
       <div className="ember-rule mt-6" />
 
-      <div className="mt-14 space-y-5">
+      <div className="mt-10 space-y-5">
         {archives.map((archive, i) => {
           const preview = archive.issues.slice(0, 4);
           return (

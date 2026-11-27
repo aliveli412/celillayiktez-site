@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function HakkindaPage() {
   return (
-    <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-[240px_1fr]">
+    <div className="mx-auto grid max-w-6xl gap-12 px-5 py-10 md:px-8 md:py-14 lg:grid-cols-[240px_1fr]">
       <aside className="hidden lg:block">
         <div className="sticky top-28 overflow-hidden border border-[color:var(--line)] bg-[color:var(--surface)]">
           <img

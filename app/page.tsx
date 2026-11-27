@@ -43,8 +43,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
-        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+      <section className="mx-auto max-w-6xl px-5 py-12 md:px-8 md:py-16">
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[color:var(--ember)]">
               Kısa hatırlatma
@@ -58,7 +58,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-y border-[color:var(--line)] bg-[color:var(--surface)]/70 py-20 md:py-24">
+      <section className="border-y border-[color:var(--line)] bg-[color:var(--surface)]/70 py-12 md:py-16">
         <div className="mx-auto max-w-6xl px-5 md:px-8">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
@@ -73,7 +73,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-px bg-[color:var(--line)] md:grid-cols-3">
+          <div className="mt-8 grid gap-px bg-[color:var(--line)] md:grid-cols-3">
             {[
               {
                 title: "Online Kitaplar",
@@ -109,7 +109,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-24">
+      <section className="mx-auto max-w-6xl px-5 py-12 md:px-8 md:py-16">
         <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[color:var(--ember)]">
           Dergi arşivi
         </p>

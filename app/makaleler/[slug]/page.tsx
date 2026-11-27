@@ -26,7 +26,7 @@ export default async function ArticlePage({ params }: Props) {
   const body = await fetchArticleHtml(article);
 
   return (
-    <div className="mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-24">
+    <div className="mx-auto max-w-3xl px-5 py-10 md:px-8 md:py-14">
       <Link
         href="/makaleler"
         className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--ember)]"

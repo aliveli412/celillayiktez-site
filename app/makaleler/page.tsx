@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function MakalelerPage() {
   return (
-    <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+    <div className="mx-auto max-w-6xl px-5 py-10 md:px-8 md:py-14">
       <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[color:var(--ember)]">
         Yazılar
       </p>
@@ -20,7 +20,7 @@ export default function MakalelerPage() {
       </p>
       <div className="ember-rule mt-6" />
 
-      <ol className="mt-12 divide-y divide-[color:var(--line)] border-y border-[color:var(--line)]">
+      <ol className="mt-8 divide-y divide-[color:var(--line)] border-y border-[color:var(--line)]">
         {articles.map((article, index) => {
           const slug = articleSlugFromHref(article.href);
           return (

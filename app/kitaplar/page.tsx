@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function KitaplarPage() {
   return (
-    <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+    <div className="mx-auto max-w-6xl px-5 py-10 md:px-8 md:py-14">
       <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[color:var(--ember)]">
         Yayınlar
       </p>
@@ -20,7 +20,7 @@ export default function KitaplarPage() {
       </p>
       <div className="ember-rule mt-6" />
 
-      <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
         {books.map((book) => {
           const slug = bookSlugFromHref(book.href);
           const href = `/kitaplar/${slug}`;

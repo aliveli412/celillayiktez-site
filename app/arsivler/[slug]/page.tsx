@@ -51,7 +51,7 @@ export default async function ArchiveDetailPage({ params }: Props) {
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[color:var(--ink)] via-[color:var(--ink)]/85 to-[color:var(--ink)]/40" />
 
-        <div className="relative mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-[1.15fr_0.85fr] md:items-end md:px-8 md:py-20">
+        <div className="relative mx-auto grid max-w-6xl gap-10 px-5 py-10 md:grid-cols-[1.15fr_0.85fr] md:items-end md:px-8 md:py-14">
           <div>
             <Link
               href="/arsivler"
@@ -101,7 +101,7 @@ export default async function ArchiveDetailPage({ params }: Props) {
         </div>
       </section>
 
-      <div className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
+      <div className="mx-auto max-w-6xl px-5 py-10 md:px-8 md:py-14">
         {archive.issues.length === 0 ? (
           <div className="border border-[color:var(--line)] bg-[color:var(--surface)] p-8 text-sm leading-7 text-[color:var(--ink-soft)]">
             Belgeler WordPress yüklemelerinde. Talep için{" "}
@@ -134,7 +134,7 @@ export default async function ArchiveDetailPage({ params }: Props) {
             </div>
             <div className="ember-rule mt-6" />
 
-            <div className="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            <div className="mt-8 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
               {archive.issues.map((issue) => {
                 const cover = issue.coverThumb || issue.cover;
                 return (
